@@ -10,7 +10,7 @@ import DevTool, { configureDevtool } from 'mobx-react-devtools';
 import HumanModel from './views/HumanModel';
 import Thumbnails from './views/Thumbnails';
 import Categories from './views/Categories';
-import {modelStore} from './stores/ModelStore';
+import {categories, modelStore} from './stores/ModelStore';
 
 // Any configurations are optional
 configureDevtool({
@@ -24,8 +24,6 @@ configureDevtool({
 });
 
 
-const categories = ["dresses", "pants", "tops"]
-
 export default (
   <Router>
     <MuiThemeProvider>
@@ -37,9 +35,9 @@ export default (
           </Layout>
           <Layout item xs={12} lg={6}>
             <Route exact path="/" component={Categories} />
-            {Array.from(categories.entries()).map((item) => (
-              <Route key={item[0]} path={"/" + item[1]} component={Thumbnails} />
-            ))}
+            {Object.values(categories).map(cat =>
+              <Route key={cat.id} path={"/" + cat.name} component={Thumbnails} />
+            )}
           </Layout>
         </Layout>
       </div>
