@@ -2,6 +2,17 @@ import React, {Component} from 'react';
 
 import "./Navigation.scss";
 class Navigation extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { searchTerm: '' };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({searchTerm: event.target.value});
+    }
+
     logo() {
         return (
             <div className="Header-navigation-logo">
@@ -25,14 +36,15 @@ class Navigation extends Component {
 
     search() {
         return (
-            <div className="">
-                
-            </div>
+            <form className="Header-navigation-search">
+                <input type="search" maxlength="100" className="Header-navigation-searchbox" placeholder="Zoeken" name="Ntt" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value={this.state.value} onChange={this.handleChange} />
+                <button className="icon icon-search"><span>Zoek</span></button>
+            </form>
         );
     }
 
     render() {
-        return (<div className="Header-navigation-wrapper">{this.logo()}{this.links()}</div>);
+        return (<div className="Header-navigation-wrapper">{this.logo()}{this.links()}{this.search()}</div>);
     }
 }
 export default Navigation;

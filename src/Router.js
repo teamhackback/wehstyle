@@ -11,6 +11,7 @@ import HumanModel from './views/HumanModel';
 import Thumbnails from './views/Thumbnails';
 import Categories from './views/Categories';
 import {categories, modelStore} from './stores/ModelStore';
+import Header from "./views/Header";
 
 // Any configurations are optional
 configureDevtool({
@@ -29,6 +30,7 @@ export default (
     <MuiThemeProvider>
       <div className="App">
         <DevTool />
+          <Header></Header>
         <Layout container gutter={24}>
           <Layout item xs={12} lg={6}>
             <HumanModel model={modelStore}></HumanModel>
