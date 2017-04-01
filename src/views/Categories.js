@@ -5,7 +5,8 @@ import Paper from 'material-ui/Paper';
 import Layout from 'material-ui/Layout';
 import Text from 'material-ui/Text';
 
-const categories = ['Tops', 'Shoes', 'Skirts']
+import {categories} from '../stores/ModelStore';
+import {mapValues} from 'lodash';
 
 const styleSheet = createStyleSheet('Categories', () => {
   return {
@@ -28,17 +29,18 @@ class Categories extends Component {
   }
 
   render() {
+    console.log("cats", categories);
     const classes = this.context.styleManager.render(styleSheet);
 
     return (
       <Layout container className={classes.root}>
-        {Array.from(categories.entries()).map((item) => (
-          <Layout key={item[0]} item>
+        {Object.values(categories).map(cat =>
+          <Layout item key={cat.id}>
             <Paper className={classes.paper}>
-              <Text>{item[1]}</Text>
+              <Text>{cat.name}</Text>
             </Paper>
           </Layout>
-        ))}
+        )}
       </Layout>
     );
   }

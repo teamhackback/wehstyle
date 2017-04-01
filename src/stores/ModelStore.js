@@ -1,6 +1,6 @@
 import {autorun, observable} from 'mobx';
 
-import items from '../../public/img/items/index.json';
+import index from '../../public/img/items/index.json';
 import {forEachRight} from 'lodash';
 
 const sortOrder = [
@@ -55,6 +55,7 @@ class ModelStore {
   }
 }
 
-export {items};
+export const items = index.items;
+export const categories = index.categories;
 export const modelStore = new ModelStore();
 export default ModelStore;
