@@ -4,7 +4,7 @@ class ModelThumbnail extends Component {
   render() {
     return (
       <div>
-        Category: {this.props.model.category}
+        Category: {this.props.model.category }
       </div>
     );
   }

@@ -5,7 +5,7 @@ import Paper from 'material-ui/Paper';
 import Layout from 'material-ui/Layout';
 import Text from 'material-ui/Text';
 
-const categories = ['Tops', 'Shoes', 'Skirts']
+import {categories} from '../stores/ModelStore';
 
 const styleSheet = createStyleSheet('Categories', () => {
   return {
