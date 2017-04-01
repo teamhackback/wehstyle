@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {observer} from 'mobx-react';
 import Dropzone from 'react-dropzone';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
 import ModelThumbnail from './ModelThumbnail';
 
 const imgStyle = {
@@ -73,8 +73,8 @@ class HumanModel extends Component {
   render() {
     return (
       <div>
-        <FlatButton type="button" onClick={this.imageUploadClick}> Upload
-        </FlatButton>
+        <Button type="button" onClick={this.imageUploadClick}> Upload
+        </Button>
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 679}}>
           <Dropzone
             onDrop={this.onDrop}
