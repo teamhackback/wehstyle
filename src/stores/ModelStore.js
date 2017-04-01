@@ -1,5 +1,8 @@
 import {autorun, observable} from 'mobx';
 
+import items from '../../public/img/items/index.json';
+import {forEachRight} from 'lodash';
+
 const sortOrder = [
   "body",
   "underwear",
@@ -14,24 +17,13 @@ class ModelStore {
   constructor() {
     //setTimeout(() => {
       //autorun(() => {
-      //this.layers.clear();
+    // push the dummy body
+      this.layers.push(items["dummy"]);
+      this.layers.push(items["26908"]);
       //});
     //}, 2000);
   }
-  @observable layers = [
-    {
-      name: "base_body",
-      src: "./img/bodys/dummybody.png",
-    },
-    {
-      name: "pants",
-      src: "./img/items/26925.png",
-    },
-    {
-      name: "shirt",
-      src: "./img/items/26512.png",
-    }
-  ];
+  @observable layers = [];
 
   addLayer(layer) {
 
@@ -40,7 +32,23 @@ class ModelStore {
   //@computed get layers() {
     //return this.layers;
   //}
+
+  findById = (x, y) => {
+    let id = -1;
+    forEachRight(this.layers.slice(), (e, i) => {
+      if (e.cropping.left <= x && x <= e.cropping.right &&
+          e.cropping.upper <= y && y <= e.cropping.lower) {
+        id = i;
+        return false;
+      }
+    });
+    if (id >= 0) {
+      return this.layers[id];
+    }
+    return false;
+  };
 }
 
+export {items};
 export const modelStore = new ModelStore();
 export default ModelStore;
