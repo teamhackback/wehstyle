@@ -5,6 +5,8 @@ const imgStyle = {
   left: 0,
   top: 0,
   position: "absolute",
+  width: 260,
+  height: 679,
 }
 
 @observer

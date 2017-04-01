@@ -1,5 +1,15 @@
 import {autorun, observable} from 'mobx';
 
+const sortOrder = [
+  "body",
+  "underwear",
+  "pants",
+  "skirt",
+  "top",
+  "hat",
+  "shoes"
+];
+
 class ModelStore {
   constructor() {
     //setTimeout(() => {
@@ -15,7 +25,11 @@ class ModelStore {
     },
     {
       name: "pants",
-      src: "./img/items/pants1.png",
+      src: "./img/items/26925.png",
+    },
+    {
+      name: "shirt",
+      src: "./img/items/26512.png",
     }
   ];
 
