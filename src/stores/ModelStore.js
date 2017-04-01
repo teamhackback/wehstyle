@@ -20,14 +20,13 @@ class ModelStore {
     // push the dummy body
       this.layers.push(items["dummy"]);
       this.layers.push(items["26908"]);
+      this.layers.push(items["26837"]);
       //});
     //}, 2000);
   }
   @observable layers = [];
 
-  addLayer(layer) {
 
-  }
 
   //@computed get layers() {
     //return this.layers;
@@ -47,6 +46,13 @@ class ModelStore {
     }
     return false;
   };
+
+  addLayer(layer) {
+
+  }
+  removeLayer(layer) {
+    this.layers.remove(layer);
+  }
 }
 
 export {items};

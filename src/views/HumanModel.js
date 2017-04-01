@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {observer} from 'mobx-react';
+import Dropzone from 'react-dropzone';
+import FlatButton from 'material-ui/FlatButton';
 
 const imgStyle = {
   left: 0,
@@ -56,14 +58,34 @@ class HumanModel extends Component {
   };
   onClick = (e) => {
     const model = this._findLayer(e);
+    if (model !== false && model.category !== "bodies") {
+      this.props.model.removeLayer(model);
+    }
+  };
+  onDrop = (files) => {
+    console.log(files);
+
+  }
+  onUploadClick = (files) => {
+
   };
   render() {
     return (
-      <div onMouseMove={this.onMouseMove} onClick={this.onClick}>
-        <span> {this.state.selectedLayer.category } </span>
-      {this.props.model.layers.map((layer) =>
-        <img key={layer.id} src={GLOBAL_IMAGE_PATH + "/" + layer.src} style={imgStyle} alt="Foo" />
-      )}
+      <div onMouseMove={this.onMouseMove} >
+        <FlatButton type="button" onClick={this.imageUploadClick}> Upload
+        </FlatButton>
+        <Dropzone
+          onDrop={this.onDrop}
+          multiple={false}
+          disableClick={true}
+          onClick={this.onUploadClick}
+        >
+          <span> {this.state.selectedLayer.category } </span>
+          <span> {this.state.mouse.join(",") } </span>
+        {this.props.model.layers.map((layer) =>
+          <img key={layer.id} src={GLOBAL_IMAGE_PATH + "/" + layer.src} style={imgStyle} alt="Foo" />
+        )}
+        </Dropzone>
       </div>
     );
   }

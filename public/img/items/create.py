@@ -15,6 +15,8 @@ for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
     im = Image.open(filename)
     print("Reading: %s" % filename)
     imName = path.basename(path.abspath(filename).replace(absFolder, "")).replace(".png", "")
+    # transparent pixels are not non-zero
+    im = im.convert("RGBa") 
     box = im.getbbox()
     obj[imName] =  {
         "id": i,
