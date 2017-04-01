@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {observer} from 'mobx-react';
 import Dropzone from 'react-dropzone';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
+import ModelThumbnail from './ModelThumbnail';
 
 const imgStyle = {
   left: 0,
@@ -19,9 +20,7 @@ class HumanModel extends Component {
     super(props);
     this.state = {
       mouse : [0, 0],
-      selectedLayer: {
-        category: "none"
-      }
+      hoveredLayer: undefined
     };
   }
   _findLayer = (e) => {
@@ -41,15 +40,16 @@ class HumanModel extends Component {
     //get parent element position in document
     if (obj.offsetParent){
         do {
+            obj = obj.offsetParent;
             e_posx += obj.offsetLeft;
             e_posy += obj.offsetTop;
-        } while (obj = obj.offsetParent);
+        } while (obj.offsetParent);
     }
     const mouse = [m_posx - e_posx, m_posy - e_posy];
     this.setState({"mouse": mouse});
     const model = this.props.model.findById(mouse[0], mouse[1]);
     if (model !== false) {
-      this.setState({"selectedLayer": model});
+      this.setState({"hoveredLayer": model});
     }
     return model;
   };
@@ -57,6 +57,7 @@ class HumanModel extends Component {
     this._findLayer(e);
   };
   onClick = (e) => {
+    console.log("click");
     const model = this._findLayer(e);
     if (model !== false && model.category !== "bodies") {
       this.props.model.removeLayer(model);
@@ -67,25 +68,30 @@ class HumanModel extends Component {
 
   }
   onUploadClick = (files) => {
-
+    console.log(files);
   };
   render() {
     return (
-      <div onMouseMove={this.onMouseMove} >
-        <FlatButton type="button" onClick={this.imageUploadClick}> Upload
-        </FlatButton>
-        <Dropzone
-          onDrop={this.onDrop}
-          multiple={false}
-          disableClick={true}
-          onClick={this.onUploadClick}
-        >
-          <span> {this.state.selectedLayer.category } </span>
-          <span> {this.state.mouse.join(",") } </span>
-        {this.props.model.layers.map((layer) =>
-          <img key={layer.id} src={GLOBAL_IMAGE_PATH + "/" + layer.src} style={imgStyle} alt="Foo" />
-        )}
-        </Dropzone>
+      <div>
+        <Button type="button" onClick={this.imageUploadClick}> Upload
+        </Button>
+        <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 679}}>
+          <Dropzone
+            onDrop={this.onDrop}
+            multiple={false}
+            disableClick={true}
+            style={{border: "none"}}
+          >
+          {this.props.model.layers.map((layer) =>
+            <img key={layer.id} src={GLOBAL_IMAGE_PATH + "/" + layer.src} style={imgStyle} alt="Foo" />
+          )}
+          </Dropzone>
+        </div>
+
+        { this.state.hoveredLayer && this.state.hoveredLayer.category !== "bodies" ?
+            <ModelThumbnail model={this.state.hoveredLayer} />
+            : null
+        }
       </div>
     );
   }

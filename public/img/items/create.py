@@ -7,9 +7,10 @@ from os import path
 import json
 
 inFolder = "."
-obj = {}
+items = {}
 absFolder= path.abspath(inFolder)
 i = 0
+categories = set()
 
 for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
     im = Image.open(filename)
@@ -18,7 +19,8 @@ for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
     # transparent pixels are not non-zero
     im = im.convert("RGBa") 
     box = im.getbbox()
-    obj[imName] =  {
+    category = path.basename(path.dirname(filename))
+    items[imName] =  {
         "id": i,
         "cropping": {
             "left": box[0],
@@ -27,10 +29,15 @@ for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
             "lower": box[3]
         },
         "src": path.abspath(filename).replace(absFolder, "")[1:],
-        "category": path.basename(path.dirname(filename))
+        "category": category
     }
+    categories.add(category)
     i += 1
 
+obj = {
+    "items": items,
+    "categories": list(categories)
+}
 with open("index.json", "w") as out:
     json.dump(obj, out)
 
