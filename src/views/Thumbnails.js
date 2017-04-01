@@ -9,7 +9,7 @@ import Layout from 'material-ui/Layout';
 import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
 
-import {categories, items, GLOBAL_IMAGE_PATH} from '../stores/ModelStore';
+import {categories, items, GLOBAL_IMAGE_PATH, modelStore} from '../stores/ModelStore';
 
 const styleSheet = createStyleSheet('ArticleThumbnails', () => {
   return {
@@ -55,7 +55,7 @@ class ArticleThumbnails extends Component {
               gutter={24}
             >
               {this.state.articles.map(article =>
-                <Layout key={article} item>
+                <Layout key={article} item onClick={() => modelStore.addLayerById(article)}>
                   <Card className={classes.card}>
                     <CardMedia>
                       <img className={classes.cardImage} src={GLOBAL_IMAGE_PATH + "/" + items[article].thumbnail} alt="TBD" />
