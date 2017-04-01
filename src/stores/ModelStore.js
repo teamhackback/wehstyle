@@ -13,6 +13,10 @@ const sortOrder = [
   "shoes"
 ];
 
+export const GLOBAL_IMAGE_PATH = "/img/items";
+export const items = index.items;
+export const categories = index.categories;
+
 class ModelStore {
   constructor() {
     //setTimeout(() => {
@@ -47,8 +51,16 @@ class ModelStore {
     return false;
   };
 
-  addLayer(layer) {
-
+  addLayerById(id) {
+    const layer = items[id];
+    console.log(layer.category);
+    this.layers.filter(l => {
+      return layer.category === l.category;
+    }).forEach(l => {
+      console.log("duplicate layer", l);
+      this.removeLayer(l)
+    });
+    this.layers.push(layer);
   }
   removeLayer(layer) {
     this.layers.remove(layer);
@@ -56,8 +68,5 @@ class ModelStore {
 }
 
 
-export const GLOBAL_IMAGE_PATH = "/img/items";
-export const items = index.items;
-export const categories = index.categories;
 export const modelStore = new ModelStore();
 export default ModelStore;

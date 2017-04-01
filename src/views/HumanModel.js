@@ -50,6 +50,8 @@ class HumanModel extends Component {
     const model = this.props.model.findById(mouse[0], mouse[1]);
     if (model !== false) {
       this.setState({"hoveredLayer": model});
+    } else {
+      this.setState({"hoveredLayer": undefined});
     }
     return model;
   };
@@ -70,9 +72,12 @@ class HumanModel extends Component {
   onUploadClick = (files) => {
     console.log(files);
   };
+  onMouseOut = () => {
+      this.setState({"hoveredLayer": undefined});
+  };
   render() {
     return (
-      <div>
+      <div onMouseOut={this.onMouseOut}>
         <Button type="button" onClick={this.imageUploadClick}> Upload
         </Button>
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 679}}>

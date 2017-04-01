@@ -11,7 +11,6 @@ import HumanModel from './views/HumanModel';
 import Thumbnails from './views/Thumbnails';
 import Categories from './views/Categories';
 import {categories, modelStore} from './stores/ModelStore';
-import Header from "./views/Header";
 
 // Any configurations are optional
 configureDevtool({
@@ -30,18 +29,15 @@ export default (
     <MuiThemeProvider>
       <div className="App">
         <DevTool />
-          <Header></Header>
-        <Layout container gutter={24}>
-          <Layout item xs={12} lg={6}>
-            <HumanModel model={modelStore}></HumanModel>
-          </Layout>
-          <Layout item xs={12} lg={6}>
-            <Route exact path="/" component={Categories} />
-            {Object.values(categories).map(cat =>
-              <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
-            )}
-          </Layout>
-        </Layout>
+            <div style={{display:"block", "float": "left"}}>
+              <HumanModel model={modelStore}></HumanModel>
+            </div>
+            <div style={{marginLeft: 300}}>
+              <Route exact path="/" component={Categories} />
+              {Object.values(categories).map(cat =>
+                <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
+              )}
+          </div>
       </div>
     </MuiThemeProvider>
   </Router>
