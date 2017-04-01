@@ -29,6 +29,7 @@ for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
             "lower": box[3]
         },
         "src": path.abspath(filename).replace(absFolder, "")[1:],
+        "thumbnail": path.abspath(filename).replace(absFolder, "")[1:],
         "category": category
     }
     categories.add(category)

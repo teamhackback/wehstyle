@@ -7,6 +7,7 @@ import Text from 'material-ui/Text';
 
 import {categories} from '../stores/ModelStore';
 import {mapValues} from 'lodash';
+import {transititonTo} from 'react-router';
 
 const styleSheet = createStyleSheet('Categories', () => {
   return {
@@ -28,6 +29,10 @@ class Categories extends Component {
     styleManager: customPropTypes.muiRequired,
   }
 
+  onCategoryClicked = (c) => {
+    console.log(c, this.context);
+  };
+
   render() {
     console.log("cats", categories);
     const classes = this.context.styleManager.render(styleSheet);
@@ -35,7 +40,7 @@ class Categories extends Component {
     return (
       <Layout container className={classes.root}>
         {Object.values(categories).map(cat =>
-          <Layout item key={cat.id}>
+          <Layout item key={cat.id} onClick={() => this.onCategoryClicked(cat.name)}>
             <Paper className={classes.paper}>
               <Text>{cat.name}</Text>
             </Paper>
