@@ -96,10 +96,22 @@
     .icon {
       font-size: 17px;
       text-decoration: none!important;
+      &:hover {
+        background-color: #ddd;
+      }
     }
     .icon-search {
       &:before {
         content: "";
+      }
+    }
+
+    .icon-cross {
+      right: 35px;
+      font-size: 7px;
+
+      &:before {
+        content: "";
       }
     }
   }
