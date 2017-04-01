@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <DevTool />
-        <HumanModel layers={modelStore}></HumanModel>
+        <HumanModel model={modelStore}></HumanModel>
       </div>
     )
   }
