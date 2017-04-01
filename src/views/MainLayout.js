@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DevTool, { configureDevtool } from 'mobx-react-devtools';
 
 import HumanModel from './HumanModel';
+import Header from './Header';
 import Categories from './Categories';
 import {modelStore} from '../stores/ModelStore';
 
@@ -32,6 +33,7 @@ export default class MainLayout extends Component {
     return (
       <MuiThemeProvider>
         <div className="App">
+            <Header></Header>
           <DevTool />
           <Layout container gutter={24}>
               <Layout item xs={12} lg={6}>

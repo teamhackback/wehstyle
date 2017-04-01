@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import "./Header.scss";
 
 import User from "./Header/User";
+import Navigation from "./Header/Navigation";
 
 class Header extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class Header extends Component {
 
     user() {
         return (
-            <div className="Header-userRow">
+            <div className="Header-user-row">
                 <div className="Header-content">
                     <User></User>
                 </div>
@@ -19,10 +20,19 @@ class Header extends Component {
         );
     }
 
+    navigation() {
+        return (
+            <div className="Header-navigation-row">
+                <div className="Header-content">
+                    <Navigation></Navigation>
+                </div>
+            </div>
+        );
+    }
 
     render() {
         return (
-            <div className="Header">{this.user()}</div>
+            <div className="Header">{this.user()}{this.navigation()}</div>
         );
     }
 }

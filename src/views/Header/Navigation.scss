@@ -1,0 +1,44 @@
+.Header-navigation-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  height: 70px;
+}
+.Header-navigation-logo {
+  width: 180px;
+  height: 70px;
+  float: left;
+
+  a {
+    float: left;
+    height: 70px;
+  }
+}
+.Header-navigation-logo-img {
+  width: 100%;
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
+}
+.Header-navigation-link-wrapper {
+  margin-left: 45px;
+  float: left;
+
+  a {
+    float: left;
+    height: 70px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    color: #333;
+    border-bottom: 4px solid #fff;
+    float: left;
+    font: 12px/3 OpenSansNormal400;
+    height: 32px;
+    line-height: 35px;
+    margin: 18px 0 0 35px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
