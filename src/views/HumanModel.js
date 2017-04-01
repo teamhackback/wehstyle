@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { findDOMNode } from 'react-dom';
+import { palette } from 'neuquant-js';
 import {observer} from 'mobx-react';
 import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
@@ -12,6 +14,29 @@ const imgStyle = {
   position: "absolute",
   width: 260,
   height: 679,
+}
+
+const rgbToHex = (r, g, b) => {
+  const hex = ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+  return `#${hex}`
+}
+ 
+const extractPalette = (img) => {
+  const canvas = document.createElement('canvas')
+  canvas.width = img.width
+  canvas.height = img.height
+ 
+  const ctx = canvas.getContext('2d')
+  ctx.drawImage(img, 0, 0)
+ 
+  const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data
+  const colors = palette(data, {netsize: 16})
+ 
+  const result = []
+  for (let i = 0, l = colors.length; i < l;) {
+    result.push(rgbToHex(colors[i++], colors[i++], colors[i++]))
+  }
+  return result
 }
 
 @observer
@@ -58,6 +83,7 @@ class HumanModel extends Component {
   onMouseMove = (e) => {
     this._findLayer(e);
   };
+
   onClick = (e) => {
     console.log("click");
     const model = this._findLayer(e);
@@ -65,21 +91,58 @@ class HumanModel extends Component {
       this.props.model.removeLayer(model);
     }
   };
+
   onDrop = (files) => {
     console.log(files);
-
   }
+
   onUploadClick = (files) => {
     console.log(files);
   };
+
   onMouseOut = () => {
       this.setState({"hoveredLayer": undefined});
   };
+
+  onImageUpload = (e) => {
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+
+    let reader = new FileReader();
+    reader.onload = (event) => {
+      let img = new Image();
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+      }
+      img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);
+
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    const colors = palette(data, {netsize: 256, samplefac: 5});
+
+    const result = []
+    for (let i = 0, l = colors.length; i < l;) {
+      result.push(rgbToHex(colors[i++], colors[i++], colors[i++]))
+    }
+
+    console.log(result);
+
+  
+  };
+
+  imageUploadClick = (e) => {
+    var fileUploadDom = findDOMNode(this.refs.imgUpload);
+    fileUploadDom.click();
+  };
+
   render() {
     return (
       <div onMouseOut={this.onMouseOut}>
-        <Button type="button" onClick={this.imageUploadClick}> Upload
-        </Button>
+        <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
+        <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 679}}>
           <Dropzone
             onDrop={this.onDrop}
