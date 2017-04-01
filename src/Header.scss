@@ -1,0 +1,20 @@
+.Header {
+  &-userRow {
+     background-color: #465363;
+     color: #fff;
+     height: 50px;
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 1;
+     vertical-align: baseline;
+   }
+
+  &-content {
+    max-width: 1190px;
+    width: 1190px;
+    margin: 0 auto;
+    position: relative;
+  }
+}
