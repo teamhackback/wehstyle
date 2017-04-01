@@ -29,17 +29,15 @@ export default (
     <MuiThemeProvider>
       <div className="App">
         <DevTool />
-        <Layout container gutter={24}>
-          <Layout item xs={12} lg={6}>
-            <HumanModel model={modelStore}></HumanModel>
-          </Layout>
-          <Layout item xs={12} lg={6}>
-            <Route exact path="/" component={Categories} />
-            {Object.values(categories).map(cat =>
-              <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
-            )}
-          </Layout>
-        </Layout>
+            <div style={{display:"block", "float": "left"}}>
+              <HumanModel model={modelStore}></HumanModel>
+            </div>
+            <div style={{marginLeft: 300}}>
+              <Route exact path="/" component={Categories} />
+              {Object.values(categories).map(cat =>
+                <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
+              )}
+          </div>
       </div>
     </MuiThemeProvider>
   </Router>
