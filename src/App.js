@@ -1,24 +1,37 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 
-//styles
-import './App.less';
-import './App.scss';
-import './App.styl';
-//import styles from './Modules.css';
-import HumanModel from './HumanModel';
+import HumanModel from './views/HumanModel';
+
+import {modelStore} from './stores/ModelStore';
+
+import DevTool, { configureDevtool } from 'mobx-react-devtools';
+
+// Any configurations are optional
+configureDevtool({
+  // Turn on logging changes button programmatically:
+  logEnabled: true,
+  // Turn off displaying conponents' updates button programmatically:
+  updatesEnabled: false,
+  // Log only changes of type `reaction`
+  // (only affects top-level messages in console, not inside groups)
+  logFilter: change => change.type === 'reaction',
+});
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 class App extends Component {
   render() {
     return (
+    <MuiThemeProvider>
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h2 className="App-title"> ☢ custom-react-scripts ☢ </h2>
-          <div className="App-subtitle"> allow custom config for create-react-app without ejecting</div>
-        </div>
-        <HumanModel></HumanModel>
+        <DevTool />
+        <HumanModel model={modelStore}></HumanModel>
       </div>
+    </MuiThemeProvider>
     )
   }
 }
