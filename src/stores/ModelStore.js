@@ -2,16 +2,20 @@ import {autorun, observable} from 'mobx';
 
 class ModelStore {
   constructor() {
-    setTimeout(() => {
-      autorun(() => {
-      this.layers.clear();
-      });
-    }, 2000);
+    //setTimeout(() => {
+      //autorun(() => {
+      //this.layers.clear();
+      //});
+    //}, 2000);
   }
   @observable layers = [
     {
       name: "base_body",
       src: "./img/bodys/dummybody.png",
+    },
+    {
+      name: "pants",
+      src: "./img/items/pants1.png",
     }
   ];
 
