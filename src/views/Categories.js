@@ -6,6 +6,9 @@ import Layout from 'material-ui/Layout';
 import Text from 'material-ui/Text';
 
 import {categories} from '../stores/ModelStore';
+import {mapValues} from 'lodash';
+import {transititonTo} from 'react-router';
+import {Link} from 'react-router-dom';
 
 const styleSheet = createStyleSheet('Categories', () => {
   return {
@@ -28,17 +31,20 @@ class Categories extends Component {
   }
 
   render() {
+    console.log("cats", categories);
     const classes = this.context.styleManager.render(styleSheet);
 
     return (
       <Layout container className={classes.root}>
-        {Array.from(categories.entries()).map((item) => (
-          <Layout key={item[0]} item>
-            <Paper className={classes.paper}>
-              <Text>{item[1]}</Text>
-            </Paper>
+        {Object.values(categories).map(cat =>
+          <Layout item key={cat.id}>
+            <Link to={"/category/" + cat.name}>
+              <Paper className={classes.paper}>
+                <Text>{cat.name}</Text>
+              </Paper>
+            </Link>
           </Layout>
-        ))}
+        )}
       </Layout>
     );
   }

@@ -4,6 +4,8 @@ import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
 import ModelThumbnail from './ModelThumbnail';
 
+import {GLOBAL_IMAGE_PATH} from '../stores/ModelStore';
+
 const imgStyle = {
   left: 0,
   top: 0,
@@ -11,8 +13,6 @@ const imgStyle = {
   width: 260,
   height: 679,
 }
-
-const GLOBAL_IMAGE_PATH = "/img/items";
 
 @observer
 class HumanModel extends Component {

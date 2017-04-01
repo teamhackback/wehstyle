@@ -55,7 +55,9 @@ class ModelStore {
   }
 }
 
+
+export const GLOBAL_IMAGE_PATH = "/img/items";
 export const items = index.items;
-export const categories = index.categories.filter(e => e != "bodies");
+export const categories = index.categories;
 export const modelStore = new ModelStore();
 export default ModelStore;
