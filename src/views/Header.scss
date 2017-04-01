@@ -1,5 +1,5 @@
 .Header {
-  &-userRow {
+  &-user-row {
      background-color: #465363;
      color: #fff;
      height: 50px;
@@ -10,6 +10,11 @@
      z-index: 1;
      vertical-align: baseline;
    }
+
+  &-navigation-row {
+    margin-top: 50px;
+    height: 70px;
+  }
 
   &-content {
     max-width: 1190px;
