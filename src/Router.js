@@ -36,7 +36,7 @@ export default (
           <Layout item xs={12} lg={6}>
             <Route exact path="/" component={Categories} />
             {Object.values(categories).map(cat =>
-              <Route key={cat.id} path={"/" + cat.name} component={Thumbnails} />
+              <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
             )}
           </Layout>
         </Layout>

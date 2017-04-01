@@ -30,10 +30,6 @@ class Categories extends Component {
     styleManager: customPropTypes.muiRequired,
   }
 
-  onCategoryClicked = (c) => {
-    console.log(c, this.context);
-  };
-
   render() {
     console.log("cats", categories);
     const classes = this.context.styleManager.render(styleSheet);
@@ -42,7 +38,7 @@ class Categories extends Component {
       <Layout container className={classes.root}>
         {Object.values(categories).map(cat =>
           <Layout item key={cat.id}>
-            <Link to={cat.name}>
+            <Link to={"/category/" + cat.name}>
               <Paper className={classes.paper}>
                 <Text>{cat.name}</Text>
               </Paper>

@@ -10,7 +10,7 @@ inFolder = "."
 items = {}
 absFolder= path.abspath(inFolder)
 i = 0
-categories = set()
+categories = {}
 
 for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
     im = Image.open(filename)
@@ -32,20 +32,19 @@ for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
         "thumbnail": path.abspath(filename).replace(absFolder, "")[1:],
         "category": category
     }
-    categories.add(category)
-    i += 1
-
-categoriesD = {}
-for i, category in enumerate(categories):
     if category != "bodies":
-        categoriesD[category] = {
-            "id": i,
-            "name": category
-        }
+        if category not in categories:
+            categories[category] = {
+                "name": category,
+                "products": [],
+                "id": len(categories)
+            }
+        categories[category]["products"].append(imName)
+    i += 1
 
 obj = {
     "items": items,
-    "categories": categoriesD
+    "categories": categories
 }
 with open("index.json", "w") as out:
     json.dump(obj, out)
