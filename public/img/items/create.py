@@ -2,6 +2,7 @@
 
 import sys
 from PIL import Image
+from colorthief import ColorThief
 import glob
 from os import path
 import json
@@ -13,14 +14,16 @@ i = 0
 categories = {}
 
 for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
+    ct = ColorThief(filename)
+    dominant_color = ct.get_color(quality=1)
     im = Image.open(filename)
     print("Reading: %s" % filename)
     imName = path.basename(path.abspath(filename).replace(absFolder, "")).replace(".png", "")
     # transparent pixels are not non-zero
-    im = im.convert("RGBa") 
+    im = im.convert("RGBa")
     box = im.getbbox()
     category = path.basename(path.dirname(filename))
-    items[imName] =  {
+    items[imName] = {
         "id": i,
         "cropping": {
             "left": box[0],
@@ -30,7 +33,8 @@ for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
         },
         "src": path.abspath(filename).replace(absFolder, "")[1:],
         "thumbnail": path.abspath(filename).replace(absFolder, "")[1:],
-        "category": category
+        "category": category,
+        "dominantColor": dominant_color.index(max(dominant_color))
     }
     if category != "bodies":
         if category not in categories:
