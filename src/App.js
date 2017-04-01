@@ -1,21 +1,5 @@
 import React, {Component} from 'react';
-
-import HumanModel from './views/HumanModel';
-
-import {modelStore} from './stores/ModelStore';
-
-import DevTool, { configureDevtool } from 'mobx-react-devtools';
-
-// Any configurations are optional
-configureDevtool({
-  // Turn on logging changes button programmatically:
-  logEnabled: true,
-  // Turn off displaying conponents' updates button programmatically:
-  updatesEnabled: false,
-  // Log only changes of type `reaction`
-  // (only affects top-level messages in console, not inside groups)
-  logFilter: change => change.type === 'reaction',
-});
+import Router from './Router';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -27,10 +11,7 @@ class App extends Component {
   render() {
     return (
     <MuiThemeProvider>
-      <div className="App">
-        <DevTool />
-        <HumanModel model={modelStore}></HumanModel>
-      </div>
+      <Router />
     </MuiThemeProvider>
     )
   }
