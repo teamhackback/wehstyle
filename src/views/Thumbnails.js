@@ -65,7 +65,9 @@ class Thumbnails extends Component {
                 </Layout>
               )}
             </Layout>
-            <div className="Button Category-back">Category overview</div>
+            <Link to={"/" + modelStore.gender + "/categories"} className="noDecoration">
+              <div className="Button Category-back">Category overview</div>
+            </Link>
           </Layout>
         </Layout>
       </div>
