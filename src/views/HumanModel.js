@@ -7,19 +7,38 @@ import Button from 'material-ui/Button';
 import ModelThumbnail from './ModelThumbnail';
 import {modelStore} from '../stores/ModelStore';
 
-const imgStyleFemale = {
-  left: 0,
-  top: 0,
-  position: "absolute",
-  width: 263,
-  height: 700,
-}
-const imgStyleMale = {
-  left: 0,
-  top: 0,
-  position: "absolute",
-  width: 363,
-  height: 700,
+import domtoimage from 'dom-to-image';
+import saveAs from 'save-as'
+
+const styles = {
+  female: {
+    imgDiv: {
+      left: 0,
+      top: 0,
+      position: "absolute",
+      width: 263,
+      height: 700,
+    },
+    parentDiv: {
+      position: "relative",
+      paddingBottom: 700,
+      width: 263
+    }
+  },
+  male: {
+    imgDiv: {
+      left: 0,
+      top: 0,
+      position: "absolute",
+      width: 363,
+      height: 700,
+    },
+    parentDiv: {
+      position: "relative",
+      paddingBottom: 700,
+      width: 363
+    }
+  }
 }
 
 const rgbToHex = (r, g, b) => {
@@ -56,7 +75,7 @@ class HumanModel extends Component {
   }
   _findLayer = (e) => {
    var m_posx = 0, m_posy = 0, e_posx = 0, e_posy = 0,
-           obj = this;
+           obj = e.target;
     //get mouse position on document crossbrowser
     if (!e){e = window.event;}
     if (e.pageX || e.pageY){
@@ -135,8 +154,6 @@ class HumanModel extends Component {
     }
 
     console.log(result);
-
-
   };
 
   imageUploadClick = (e) => {
@@ -144,12 +161,21 @@ class HumanModel extends Component {
     fileUploadDom.click();
   };
 
+  downloadClick = () => {
+    domtoimage.toBlob(this.modelNode, {quality: 0.95}).then((blob) => {
+      saveAs(blob, 'my-node.jpg');
+    });
+  };
+
   render() {
     return (
       <div onMouseOut={this.onMouseOut}>
         <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
+        <Button type="button" onClick={this.downloadClick}>Download</Button>
         <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
-        <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 700}}>
+        <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={styles[modelStore.gender].parentDiv}
+          ref={(node) => this.modelNode = node}
+        >
           <Dropzone
             onDrop={this.onDrop}
             multiple={false}
@@ -157,7 +183,7 @@ class HumanModel extends Component {
             style={{border: "none"}}
           >
           {this.props.model.layers.map((layer) =>
-            <img key={layer.id} src={this.props.model.imagePath(layer)} style={modelStore.gender === "male" ? imgStyleMale : imgStyleFemale} alt="Foo" />
+            <img key={layer.id} src={this.props.model.imagePath(layer)} style={styles[modelStore.gender].imgDiv} alt="Foo" />
           )}
           </Dropzone>
         </div>

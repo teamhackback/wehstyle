@@ -20,9 +20,12 @@ class ModelStore {
     //setTimeout(() => {
       //autorun(() => {
     // push the dummy body
-      this.setGender("male");
-      this.layers.push(this.items["blue_fancy_shirt"]);
-      this.layers.push(this.items["blue_pants"]);
+      //this.setGender("male");
+      //this.layers.push(this.items["blue_fancy_shirt"]);
+      //this.layers.push(this.items["blue_pants"]);
+      this.setGender("female");
+      this.layers.push(this.items["bra1"]);
+      //this.layers.push(this.items["shorts1"]);
       //});
     //}, 2000);
   }
