@@ -35,10 +35,14 @@ for gender in ["male", "female"]:
                 "lower": box[3]
             },
             "src": path.abspath(filename).replace(absFolder, "")[1:],
-            "thumbnail": path.abspath(filename).replace(absFolder, "")[1:],
+            "thumbnail": path.abspath(filename).replace(absFolder, "")[1:].replace(".png", "_cropped.jpg"),
             "category": category,
             "dominantColor": dominant_color.index(max(dominant_color))
         }
+        cropped = im.crop(box)
+        background = Image.new("RGB", cropped.size, (255, 255, 255))
+        background.paste(cropped, mask=cropped.split()[3]) # 3 is the alpha channel
+        background.save(filename.replace(".png", "_cropped.jpg"), 'JPEG', quality=80)
         if category != "bodies":
             if category not in categories:
                 categories[category] = {
