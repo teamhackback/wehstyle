@@ -37,8 +37,9 @@ class Navigation extends Component {
     search() {
         return (
             <form className="Header-navigation-search">
-                <input type="search" maxlength="100" className="Header-navigation-searchbox" placeholder="Zoeken" name="Ntt" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value={this.state.value} onChange={this.handleChange} />
+                <input type="search" maxlength="100" className="Header-navigation-searchbox" placeholder="Zoeken" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value={this.state.value} onChange={this.handleChange} />
                 <button className="icon icon-search"><span>Zoek</span></button>
+                <button className="icon icon-cross"><span>Zoek</span></button>
             </form>
         );
     }
