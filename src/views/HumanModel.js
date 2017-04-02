@@ -7,6 +7,9 @@ import Button from 'material-ui/Button';
 import ModelThumbnail from './ModelThumbnail';
 import {modelStore} from '../stores/ModelStore';
 
+import domtoimage from 'dom-to-image';
+import saveAs from 'save-as'
+
 const imgStyleFemale = {
   left: 0,
   top: 0,
@@ -135,8 +138,6 @@ class HumanModel extends Component {
     }
 
     console.log(result);
-
-
   };
 
   imageUploadClick = (e) => {
@@ -144,12 +145,21 @@ class HumanModel extends Component {
     fileUploadDom.click();
   };
 
+  downloadClick = () => {
+    domtoimage.toBlob(this.modelNode, {quality: 0.95}).then((blob) => {
+      saveAs(blob, 'my-node.jpg');
+    });
+  };
+
   render() {
     return (
       <div onMouseOut={this.onMouseOut}>
         <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
+        <Button type="button" onClick={this.downloadClick}>Download</Button>
         <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
-        <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 700}}>
+        <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 700}}
+          ref={(node) => this.modelNode = node}
+        >
           <Dropzone
             onDrop={this.onDrop}
             multiple={false}
