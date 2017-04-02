@@ -162,16 +162,38 @@ class HumanModel extends Component {
   };
 
   downloadClick = () => {
-    domtoimage.toBlob(this.modelNode, {quality: 0.95}).then((blob) => {
+    domtoimage.toBlob(this.modelNode).then((blob) => {
       saveAs(blob, 'my-node.jpg');
     });
   };
+
+  shareClick = () => {
+    domtoimage.toBlob(this.modelNode, {quality: 0.95}).then((blob) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://wehstyle.hackback.tech/api/upload', true);
+      var form = new FormData();
+      form.append('title', 'WehStyle model');
+      form.append('description', 'See it in large');
+      form.append('image', blob, "image.jpg");
+      xhr.onload = function(e) {
+        if (this.status === 200) {
+          const e = JSON.parse(this.responseText);
+          const text = encodeURI("I just created this new Wehstyle model:");
+          const url = encodeURI(e.html);
+          const twitter = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+          window.open(twitter,'_blank');
+        }
+      };
+      xhr.send(form);
+    });
+  }
 
   render() {
     return (
       <div onMouseOut={this.onMouseOut}>
         <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
         <Button type="button" onClick={this.downloadClick}>Download</Button>
+        <Button type="button" onClick={this.shareClick}>Share</Button>
         <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={styles[modelStore.gender].parentDiv}
           ref={(node) => this.modelNode = node}
