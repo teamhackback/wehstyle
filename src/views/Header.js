@@ -4,12 +4,24 @@ import "./Header.scss";
 
 import User from "./Header/User";
 import Navigation from "./Header/Navigation";
+import {Link} from 'react-router-dom';
 
+import {modelStore} from '../stores/ModelStore';
+import {observer} from 'mobx-react';
+
+
+@observer
 class Header extends Component {
-    categoriesNames = [ "Kids", "Business", "Men", "Women", "Teenagers", "Sports" ];
-
-    constructor(props) {
+      constructor(props) {
         super(props);
+        this.state = {categoriesNames: [
+            { link: "#", name: "Kids"},
+            { link: "#", name: "Business"},
+            { gender: "male", link: "/male/categories", name:  "Men"},
+            { gender: "female", link: "/female/categories", name:"Women"},
+            { link: "#", name:"Teenagers"},
+            { link: "#", name:  "Sports"}
+          ]};
     }
 
     user() {
@@ -32,8 +44,9 @@ class Header extends Component {
         );
     }
     getCategoryElement(text) {
+        const defaultClass = "Header-Categories-link";
         return(
-            <a key={text} href="#" className="Categories-link">{text}</a>
+          <Link to={text.link} className={text.gender === modelStore.gender ? defaultClass + " active" : defaultClass} key={text.name} href="#" >{text.name} </Link>
         );
     }
 
@@ -42,7 +55,7 @@ class Header extends Component {
             <div className="Header-categories-row">
                 <div className="Header-content">
 
-                  { this.categoriesNames.map(value =>
+                  { this.state.categoriesNames.map(value =>
                     this.getCategoryElement(value)
                   )}
                 </div>

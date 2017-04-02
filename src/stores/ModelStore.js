@@ -36,6 +36,10 @@ class ModelStore {
   @observable gender = "male";
 
   setGender(gender) {
+    if (gender === this.gender)
+      return;
+    if (gender !== "male" && gender !== "female")
+      return;
     this.gender = gender;
     this.layers.clear();
     this.layers.push(this.items[gender]);
@@ -130,7 +134,6 @@ class ModelStore {
     });
     preds = sortBy(preds, 'sum');
     preds = take(preds, 3).map(e => e.o);
-    console.log("preds", preds);
     return preds;
   }
 }

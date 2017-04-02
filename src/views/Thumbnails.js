@@ -29,10 +29,14 @@ class Thumbnails extends Component {
 
   constructor(props) {
     super(props);
-    const category = props.location.pathname.replace("/category/", "");
+    const category = props.match.params.catid;
     this.state = {
       articles: modelStore.categories[category].products || []
     };
+  }
+
+  componentWillMount(){
+    modelStore.setGender(this.props.location.pathname.split("/")[1]);
   }
 
   render() {

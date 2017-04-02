@@ -38,6 +38,9 @@ class Categories extends Component {
   static contextTypes = {
     styleManager: customPropTypes.muiRequired,
   }
+  componentWillMount(){
+    modelStore.setGender(this.props.location.pathname.split("/")[1]);
+  }
 
   render() {
     const classes = this.context.styleManager.render(styleSheet);
@@ -54,7 +57,7 @@ class Categories extends Component {
               <Layout container align='flex-start' justify='center' gutter={12}>
                 {Object.values(modelStore.categories).map(cat =>
                   <Layout item key={cat.id}>
-                    <Link to={"/category/" + cat.name}>
+                    <Link to={"/" + modelStore.gender + "/category/" + cat.name}>
                       <Paper className={classes.paper}>
                         <Text>{cat.name}</Text>
                       </Paper>

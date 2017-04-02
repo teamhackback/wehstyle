@@ -31,9 +31,11 @@ export default (
       <div className="App">
         <Header />
         <Route exact path="/" component={Home} />
-        <Route path="/categories" component={Categories} />
-        {Object.values(modelStore.categories).map(cat =>
-          <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
+        { ["male", "female"].map(gender =>
+          <div key={gender}>
+            <Route path={"/" + gender + "/categories"} component={Categories} />
+            <Route path={"/" + gender + "/category/:catid"} component={Thumbnails} />
+        </div>
         )}
       </div>
     </MuiThemeProvider>
