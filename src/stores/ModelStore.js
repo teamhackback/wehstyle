@@ -34,6 +34,7 @@ class ModelStore {
   }
   @observable layers = [];
   @observable gender = "male";
+  @observable searchTerm = "";
 
   setGender(gender) {
     if (gender === this.gender)
@@ -135,6 +136,20 @@ class ModelStore {
     preds = sortBy(preds, 'sum');
     preds = take(preds, 3).map(e => e.o);
     return preds;
+  }
+
+  @computed get searchedItems() {
+    console.log("running pred");
+    const search = this.searchTerm.toLowerCase();
+    return Object.values(this.items).filter((l, i) => {
+      if (l.category === "bodies")
+        return false;
+      if (some(this.layers, (s) => {
+          return s.id === l.id;
+      }))
+        return false;
+      return l.name.toLowerCase().indexOf(search) >= 0;
+  });
   }
 }
 

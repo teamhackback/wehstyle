@@ -11,6 +11,7 @@ import {observer} from 'mobx-react';
 
 import Thumbnail from './Thumbnail';
 import Recommender from './Recommender';
+import SearchView from './SearchView';
 
 
 const styleSheet = createStyleSheet('Thumbnails', () => {
@@ -50,6 +51,7 @@ class Thumbnails extends Component {
             <HumanModel model={modelStore}></HumanModel>
           </Layout>
           <Layout item lg={6}>
+            <SearchView />
             <Recommender />
             <div className="Title">Select item</div>
             <Layout container align='flex-start' justify='center' gutter={16}>

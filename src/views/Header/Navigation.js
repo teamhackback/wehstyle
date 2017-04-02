@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {modelStore} from '../../stores/ModelStore';
 
 import "./Navigation.scss";
 class Navigation extends Component {
@@ -11,6 +12,7 @@ class Navigation extends Component {
 
     handleChange(event) {
         this.setState({searchTerm: event.target.value});
+      modelStore.searchTerm = event.target.value;
     }
 
     logo() {
@@ -33,14 +35,17 @@ class Navigation extends Component {
             </div>
         );
     }
+    onClear = () => {
+      modelStore.searchTerm = "";
+    };
 
+                //<button className="icon icon-cross"><span>Zoek</span></button>
     search() {
         return (
-            <form className="Header-navigation-search">
-                <input type="search" maxLength="100" className="Header-navigation-searchbox" placeholder="Zoeken" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" value={this.state.value} onChange={this.handleChange} />
-                <button className="icon icon-search"><span>Zoek</span></button>
-                <button className="icon icon-cross"><span>Zoek</span></button>
-            </form>
+          <div className="Header-navigation-search" onSubmit={(e) => false }>
+                <input type="search" maxLength="100" className="Header-navigation-searchbox" placeholder="Zoeken" spellCheck="false" onChange={this.handleChange} />
+                <button className="icon icon-search" onClick={this.onClear}><span>Zoek</span></button>
+            </div>
         );
     }
 

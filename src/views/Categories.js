@@ -17,6 +17,7 @@ import './Categories.scss';
 import './Customizer.scss';
 import HumanModel from './HumanModel';
 import Recommender from './Recommender';
+import SearchView from './SearchView';
 
 const styleSheet = createStyleSheet('Categories', () => {
   return {
@@ -53,6 +54,7 @@ class Categories extends Component {
                 <HumanModel model={modelStore}></HumanModel>
             </Layout>
             <Layout item lg={6}>
+            <SearchView />
               <div className="Title">Select category</div>
               <Layout container align='flex-start' justify='center' gutter={12}>
                 {Object.values(modelStore.categories).map(cat =>

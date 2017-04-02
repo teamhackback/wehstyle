@@ -200,6 +200,7 @@ class HumanModel extends Component {
           <Button type="button" onClick={this.shareClick}>Share</Button>
           <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
         </div>
+        <div style={{"width": 363, marginLeft: "11vw"}}>
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={styles[modelStore.gender].parentDiv}
           ref={(node) => this.modelNode = node}
         >
@@ -213,6 +214,7 @@ class HumanModel extends Component {
             <img key={layer.id} src={this.props.model.imagePath(layer)} style={styles[modelStore.gender].imgDiv} alt="Foo" />
           )}
           </Dropzone>
+        </div>
         </div>
 
         { this.state.hoveredLayer && this.state.hoveredLayer.category !== "bodies" ?
