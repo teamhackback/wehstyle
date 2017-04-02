@@ -1,7 +1,9 @@
 import {autorun, computed, observable} from 'mobx';
 
 import index from '../../public/img/items/index.json';
-import {forEachRight} from 'lodash';
+import {forEachRight, includes} from 'lodash';
+
+const parts = index.parts;
 
 const sortOrder = [
   "body",
@@ -73,14 +75,24 @@ class ModelStore {
 
   addLayerById(id) {
     const layer = this.items[id];
-    console.log(layer.category);
-    this.layers.filter(l => {
-      return layer.category === l.category;
+    const excludeId = this.layers.length;
+    this.layers.push(layer);
+    this.layers.filter((l, i) => {
+      if (i === excludeId)
+        return false;
+      if (l.category === "bodies") {
+        return false;
+      }
+      if (layer.mapping === l.mapping ) {
+        return true;
+      }
+      return includes(parts[layer.mapping], l.mapping);
     }).forEach(l => {
       console.log("duplicate layer", l);
-      this.removeLayer(l)
+      setTimeout(() => {
+        this.removeLayer(l)
+      }, 50);
     });
-    this.layers.push(layer);
   }
   removeLayer(layer) {
     this.layers.remove(layer);
