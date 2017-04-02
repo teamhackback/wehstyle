@@ -13,40 +13,240 @@ categoriyMapping = {
     "female": {
         "categories": {
             "tops": {
-                "name": "Tops"
+                "name": "Tops",
+                "img": "thumbnailwomentop.png"
             },
             "rompers": {
-                "name": "rompers"
+                "name": "rompers",
+                "img": "thumbnailwomenonepieces.png"
             },
             "bottom": {
-                "name": "Bottoms"
+                "name": "Bottoms",
+                "img": "thumbnailwomenbottom.png"
             },
             "sports": {
-                "name": "Sports"
+                "name": "Sports",
+                "img": "thumbnailwomensports.png"
             }
         },
         "products": [
+ {
+   "Gender": "female",
+   "FileId": 935115,
+   "Name": "Mango pantalon",
+   "Category": "bottoms",
+   "mapping": "bottom",
+   "Meta": "pants dark blue flowers",
+   "link": "https://www.wehkamp.nl/damesmode/damesbroeken/damesbroeken/mango-pantalon/C21_DBR_DBR_935115/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 921098,
+   "Name": "Didi linnen pantalon",
+   "Category": "bottoms",
+   "mapping": "bottom",
+   "Meta": "pants trousers light brindle",
+   "link": "https://www.wehkamp.nl/damesmode/damesbroeken/damesbroeken/didi-linnen-pantalon/C21_DBR_DBR_921098/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 890075,
+   "Name": "VERO MODA pantalon",
+   "Category": "bottoms",
+   "mapping": "bottom",
+   "Meta": "pants dark blue gold ",
+   "link": "https://www.wehkamp.nl/damesmode/damesbroeken/damesbroeken/vero-moda-pantalon/C21_DBR_DBR_890075/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 933139,
+   "Name": "Pieces broek",
+   "Category": "bottoms",
+   "mapping": "bottom",
+   "Meta": "pants white stripes",
+   "link": "https://www.wehkamp.nl/damesmode/damesbroeken/damesbroeken/pieces-broek/C21_DBR_DBR_933139/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 415377,
+   "Name": "Nike sportbh",
+   "Category": "sports",
+   "mapping": "top",
+   "Meta": "nike sport bra white ",
+   "link": "https://www.wehkamp.nl/damesmode/dames-lingerie/dames-sportondergoed/nike-sportbh/C21_1A3_A31_415377/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 876942,
+   "Name": "Superdry Sport vest",
+   "Category": "sports",
+   "mapping": "top",
+   "Meta": "top blue superdry",
+   "link": "https://www.wehkamp.nl/damesmode/sportkleding-dames/sportkleding-dames/superdry-sport-vest/C21_1AI_1AI_876942/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 875725,
+   "Name": "whkmp's GREAT LOOKS SPORT sport T-shirt",
+   "Category": "romper",
+   "mapping": "top",
+   "Meta": "top black women ",
+   "link": "https://www.wehkamp.nl/damesmode/grote-maten-dameskleding/grote-maten-dameskleding/whkmps-great-looks-sport-sport-t-shirt/C21_1A7_1A7_875725/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 915805,
+   "Name": "Mango Sport sportsweater",
+   "Category": "sports",
+   "mapping": "top",
+   "Meta": "top grey ",
+   "link": "https://www.wehkamp.nl/damesmode/dames-truien-vesten/damessweaters/mango-sport-sportsweater/C21_1AB_PO8_915805/"
+ },
+ {
+   "Gender": "female",
+   "FileId": 941888,
+   "Name": "MS Mode denim bermuda",
+   "Category": "bottoms",
+   "mapping": "bottom",
+   "Meta": "blue pants",
+   "link": "https://www.wehkamp.nl/damesmode/dames-jeans/dames-jeans/ms-mode-denim-bermuda/C21_DJS_DJS_941888/?MaatCode=0400&PI=0&PrI=3&Nrpp=94&Blocks=0&Ns=D&NavState=/_/N-60yw&IsSeg=0"
+ },
+ {
+   "Gender": "female",
+   "FileId": 946124,
+   "Name": "C&A Yessica bermuda",
+   "Category": "bottoms",
+   "mapping": "bottom",
+   "Meta": "red pants",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=946124&Ntt=rode%20broek&PI=0&PrI=50&Nrpp=96&Blocks=0&View=Grid&NavState=%2fDamesmode%2f_%2fN-16ag"
+ },
+ {
+   "Gender": "female",
+   "FileId": 901195,
+   "Name": "Miss Etam Lang slim fit jeans",
+   "Category": "romper",
+   "mapping": "bottom",
+   "Meta": "blue pants",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=901195&Ntt=lange%20blauwe%20broek&PI=0&PrI=9&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 876120,
+   "Name": "Sandwich broek",
+   "Category": "romper",
+   "mapping": "bottom",
+   "Meta": "white pants",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=876120&Ntt=lange%20blauwe%20broek%20wit%20weid&PI=0&PrI=3&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 682276,
+   "Name": "Jack Wolfskin dames afritsbroek Marrakech",
+   "Category": "sports",
+   "mapping": "bottom",
+   "Meta": "black sports pants",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=682276&Ntt=sport%20vrouwen%20broek&PI=0&PrI=0&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 911170,
+   "Name": "Miss Etam Regulier cropped loose broek",
+   "Category": "sports",
+   "mapping": "bottom",
+   "Meta": "flowers sports pans",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=911170&Ntt=sport%20vrouwen%20broek%20bloemen&PI=0&PrI=18&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 687324,
+   "Name": "whkmp's GREAT LOOKS SPORT broek",
+   "Category": "sports",
+   "mapping": "bottom",
+   "Meta": "white black pants sports",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=687324&Ntt=sport%20vrouwen%20broek%20zwart&PI=0&PrI=2&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 933216,
+   "Name": "Hunkemöller HKMX sportshort",
+   "Category": "sports",
+   "mapping": "bottom",
+   "Meta": "white black pants sports",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=933216&Ntt=sport%20vrouwen%20broek%20zwart&PI=0&PrI=19&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 876293,
+   "Name": "whkmp's GREAT LOOKS Jurk",
+   "Category": "tops",
+   "mapping": "whole",
+   "Meta": "black dress thingy",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=876293&Ntt=zwarte%20jurk&PI=0&PrI=14&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 889843,
+   "Name": "Mango sweater",
+   "Category": "tops",
+   "mapping": "top",
+   "Meta": "blue sweater",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=889843&Ntt=blauwe%20sweater&PI=0&PrI=84&Nrpp=96&Blocks=0&View=Grid&NavState=%2fDamesmode%2f_%2fN-16ag"
+ },
+ {
+   "Gender": "female",
+   "FileId": 838333,
+   "Name": "WE Fashion loose fit top",
+   "Category": "tops",
+   "mapping": "top",
+   "Meta": "blue top",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=838333&Ntt=blauwe%20top&PI=0&PrI=73&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 883236,
+   "Name": "Paprika top",
+   "Category": "tops",
+   "mapping": "top",
+   "Meta": "flowers top",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=883236&Ntt=blouse%20bloemen&PI=0&PrI=16&Nrpp=96&Blocks=0&View=Grid"
+ },
+ {
+   "Gender": "female",
+   "FileId": 891064,
+   "Name": "Claudia Sträter top",
+   "Category": "tops",
+   "mapping": "top",
+   "Meta": "white top",
+   "link": "https://www.wehkamp.nl/Zoeken/ArtikelDetail.aspx?ArtikelNummer=891064&Ntt=white%20top&PI=0&PrI=0&Nrpp=96&Blocks=0&View=Grid"
+ }
+
         ]
     },
     "male": {
         "categories": {
             "shirts": {
-                "name": "Shirts"
+                "name": "Shirts",
+                "img": "thumbnailmentop.png"
             },
             "pants": {
-                "name": "Pants"
+                "name": "Pants",
+                "img": "thumbnailmenbottoms.png"
             },
             "sweaters": {
-                "name": "Sweaters"
+                "name": "Sweaters",
+                "img": "thumbnailmenssweaters.png"
             },
             "formal": {
-                "name": "Formal"
+                "name": "Formal",
+                "img": "thumbnailmenformal.png"
             },
             "coats": {
-                "name": "Coats"
+                "name": "Coats",
+                "img": "thumbnailmenjackets.png"
             },
             "sports": {
-                "name": "Sports"
+                "name": "Sports",
+                "img": "thumbnailmensports.png"
             }
         },
         "products":
@@ -293,6 +493,7 @@ for gender in ["male", "female"]:
                 categories[category] = {
                     "name": category,
                     "fulltext": categoryData["name"],
+                    "img": categoryData["img"],
                     "products": [],
                     "id": len(categories)
                 }

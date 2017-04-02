@@ -158,6 +158,11 @@ class ModelStore {
              l.fulltext.toLowerCase().indexOf(search) >= 0;
   });
   }
+
+  getCategory(category) {
+    console.log("cat", category, this.categories);
+    return this.categories[category];
+  }
 }
 
 
