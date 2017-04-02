@@ -5,33 +5,39 @@ import {observer} from 'mobx-react';
 import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
 import ModelThumbnail from './ModelThumbnail';
+import {modelStore} from '../stores/ModelStore';
 
-import {GLOBAL_IMAGE_PATH} from '../stores/ModelStore';
-
-const imgStyle = {
+const imgStyleFemale = {
   left: 0,
   top: 0,
   position: "absolute",
-  width: 260,
-  height: 679,
+  width: 263,
+  height: 700,
+}
+const imgStyleMale = {
+  left: 0,
+  top: 0,
+  position: "absolute",
+  width: 363,
+  height: 700,
 }
 
 const rgbToHex = (r, g, b) => {
   const hex = ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
   return `#${hex}`
 }
- 
+
 const extractPalette = (img) => {
   const canvas = document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
- 
+
   const ctx = canvas.getContext('2d')
   ctx.drawImage(img, 0, 0)
- 
+
   const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data
   const colors = palette(data, {netsize: 16})
- 
+
   const result = []
   for (let i = 0, l = colors.length; i < l;) {
     result.push(rgbToHex(colors[i++], colors[i++], colors[i++]))
@@ -130,7 +136,7 @@ class HumanModel extends Component {
 
     console.log(result);
 
-  
+
   };
 
   imageUploadClick = (e) => {
@@ -143,7 +149,7 @@ class HumanModel extends Component {
       <div onMouseOut={this.onMouseOut}>
         <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
         <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
-        <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 679}}>
+        <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={{position: "relative", paddingBottom: 700}}>
           <Dropzone
             onDrop={this.onDrop}
             multiple={false}
@@ -151,7 +157,7 @@ class HumanModel extends Component {
             style={{border: "none"}}
           >
           {this.props.model.layers.map((layer) =>
-            <img key={layer.id} src={GLOBAL_IMAGE_PATH + "/" + layer.src} style={imgStyle} alt="Foo" />
+            <img key={layer.id} src={this.props.model.imagePath(layer)} style={modelStore.gender === "male" ? imgStyleMale : imgStyleFemale} alt="Foo" />
           )}
           </Dropzone>
         </div>

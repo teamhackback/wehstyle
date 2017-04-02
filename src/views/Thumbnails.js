@@ -9,7 +9,9 @@ import Layout from 'material-ui/Layout';
 import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
 
-import {categories, items, GLOBAL_IMAGE_PATH, modelStore} from '../stores/ModelStore';
+import {GLOBAL_IMAGE_PATH, modelStore} from '../stores/ModelStore';
+import {observer} from 'mobx-react';
+
 
 const styleSheet = createStyleSheet('ArticleThumbnails', () => {
   return {
@@ -25,6 +27,7 @@ const styleSheet = createStyleSheet('ArticleThumbnails', () => {
   };
 });
 
+@observer
 class ArticleThumbnails extends Component {
   static contextTypes = {
     styleManager: customPropTypes.muiRequired,
@@ -34,7 +37,7 @@ class ArticleThumbnails extends Component {
     super(props);
     const category = props.location.pathname.replace("/category/", "");
     this.state = {
-      articles: categories[category].products || []
+      articles: modelStore.categories[category].products || []
     };
   }
 
@@ -58,7 +61,7 @@ class ArticleThumbnails extends Component {
                 <Layout key={article} item onClick={() => modelStore.addLayerById(article)}>
                   <Card className={classes.card}>
                     <CardMedia>
-                      <img className={classes.cardImage} src={GLOBAL_IMAGE_PATH + "/" + items[article].thumbnail} alt="TBD" />
+                      <img className={classes.cardImage} src={modelStore.imageThumbnail(modelStore.items[article])} alt="TBD" />
                     </CardMedia>
                   </Card>
                 </Layout>

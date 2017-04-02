@@ -7,5 +7,5 @@ for file in $(find -name "*.png") ; do
     filename=${file%.*}
     filenameSmall=${filename}_small.png
     echo "$file -> $filenameSmall"
-    convert -resize 1000x1000 $file $filenameSmall
+    convert -resize 700x700 $file $filenameSmall
 done

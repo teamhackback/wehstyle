@@ -1,4 +1,4 @@
-import {autorun, observable} from 'mobx';
+import {autorun, computed, observable} from 'mobx';
 
 import index from '../../public/img/items/index.json';
 import {forEachRight} from 'lodash';
@@ -14,23 +14,40 @@ const sortOrder = [
 ];
 
 export const GLOBAL_IMAGE_PATH = "/img/items";
-export const items = index.items;
-export const categories = index.categories;
 
 class ModelStore {
   constructor() {
     //setTimeout(() => {
       //autorun(() => {
     // push the dummy body
-      this.layers.push(items["dummy"]);
-      this.layers.push(items["26908"]);
-      this.layers.push(items["26837"]);
+      this.setGender("male");
+      this.layers.push(this.items["blue_fancy_shirt"]);
+      this.layers.push(this.items["blue_pants"]);
       //});
     //}, 2000);
   }
   @observable layers = [];
+  @observable gender = "male";
 
+  setGender(gender) {
+    this.gender = gender;
+    this.layers.clear();
+    this.layers.push(this.items[gender]);
+  }
+  @computed get items() {
+    return index[this.gender].items;
+  }
+  @computed get categories() {
+    return index[this.gender].categories;
+  }
 
+  imagePath(item) {
+    return GLOBAL_IMAGE_PATH + "/" + this.gender + "/" + item.src;
+  }
+
+  imageThumbnail(item) {
+    return GLOBAL_IMAGE_PATH + "/" + this.gender + "/" + item.thumbnail;
+  }
 
   //@computed get layers() {
     //return this.layers;
@@ -52,7 +69,7 @@ class ModelStore {
   };
 
   addLayerById(id) {
-    const layer = items[id];
+    const layer = this.items[id];
     console.log(layer.category);
     this.layers.filter(l => {
       return layer.category === l.category;

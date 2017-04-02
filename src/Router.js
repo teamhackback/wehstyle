@@ -10,7 +10,7 @@ import DevTool, { configureDevtool } from 'mobx-react-devtools';
 import HumanModel from './views/HumanModel';
 import Thumbnails from './views/Thumbnails';
 import Categories from './views/Categories';
-import {categories, modelStore} from './stores/ModelStore';
+import {modelStore} from './stores/ModelStore';
 import Header from "./views/Header";
 
 // Any configurations are optional
@@ -36,7 +36,7 @@ export default (
             </div>
             <div style={{marginLeft: 300}}>
               <Route exact path="/" component={Categories} />
-              {Object.values(categories).map(cat =>
+              {Object.values(modelStore.categories).map(cat =>
                 <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
               )}
           </div>
