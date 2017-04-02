@@ -20,6 +20,11 @@ const {
     OKShareButton
 } = ShareButtons;
 
+const shareUrl = "https://whatever.com/";
+const imageUrl = "https://linktoimage/";
+const title = "Wehkamp designer";
+const description = "Zojuist een prachtig outfit gecreerd, direct te bestellen bij Wehkamp!";
+
 class Customizer extends Component {
     constructor(props) {
         super(props);
@@ -28,12 +33,14 @@ class Customizer extends Component {
         return (
             <div className="Customizer-left">
                 <div className="Title">Your outfit</div>
-                <HumanModel model={modelStore}></HumanModel>
+                <div className="Customizer-left-model">
+                    <HumanModel model={modelStore}></HumanModel>
+                </div>
             </div>);
     }
     shareButtons() {
         return (
-            <FacebookShareButton />
+            <FacebookShareButton url={shareUrl} picture={imageUrl} description={description} title={title} />
         );
     }
     items() {
@@ -41,6 +48,7 @@ class Customizer extends Component {
             <div className="Customizer-right">
                 <div className="Title">Select category</div>
                 <Categories></Categories>
+                {this.shareButtons()}
             </div>
         );
     }

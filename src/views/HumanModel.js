@@ -22,7 +22,9 @@ const styles = {
     parentDiv: {
       position: "relative",
       paddingBottom: 700,
-      width: 263
+      width: 263,
+        marginLeft: 'auto',
+        marginRight: 'auto'
     }
   },
   male: {
@@ -170,8 +172,6 @@ class HumanModel extends Component {
   render() {
     return (
       <div onMouseOut={this.onMouseOut}>
-        <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
-        <Button type="button" onClick={this.downloadClick}>Download</Button>
         <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={styles[modelStore.gender].parentDiv}
           ref={(node) => this.modelNode = node}
@@ -190,8 +190,13 @@ class HumanModel extends Component {
 
         { this.state.hoveredLayer && this.state.hoveredLayer.category !== "bodies" ?
             <ModelThumbnail model={this.state.hoveredLayer} />
-            : null
+            : <div className="Customizer-current-category">Selecteer een kledingstuk</div>
         }
+          <div className="ButtonWrapper">
+              <div className="Button" type="button" onClick={this.imageUploadClick}>Upload</div>
+              <div className="Button" type="button" onClick={this.downloadClick}>Download</div>
+              <div className="Button Button-male" type="button">Male</div>
+          </div>
       </div>
     );
   }
