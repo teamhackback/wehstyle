@@ -16,6 +16,27 @@
     height: 70px;
   }
 
+  &-categories-row {
+    background-color: rgba(248,247,247,.95);
+    height: 45px;
+
+    a {
+      color: #333;
+      display: block;
+      font: 12px/28px OpenSansLight300;
+      text-decoration: none;
+      text-transform: uppercase;
+      float: left;
+      height: 45px;
+      line-height: 45px;
+      margin-right: 30px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   &-content {
     max-width: 1190px;
     width: 1190px;
