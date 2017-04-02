@@ -19,9 +19,19 @@ const styleSheet = createStyleSheet('Categories', () => {
       width: 150,
     },
     bigAvatar: {
-      margin: 10,
-      width: 140,
-      height: 140,
+          margin: 10,
+          width: 140,
+          height: 140,
+          position: 'relative'
+      },
+    avatarText: {
+      color: "white",
+      position: "absolute",
+      top: "50%",
+      width: "160px",
+      fontWeight: "bold",
+      transform: "translateY(-50%)",
+      textAlign: "center"
     }
   };
 });
@@ -45,11 +55,7 @@ class Category extends Component {
           alt="Item"
           className={classes.bigAvatar}
           src="/img/items/circle.png" />
-        <div style={{
-          "textDecoration": "none",
-          "textAlign": "center",
-          "color": "black"
-        }}>{this.props.name}
+        <div className={classes.avatarText}>{this.props.name}
         </div>
         </div>
       </Link>
