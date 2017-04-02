@@ -36,10 +36,35 @@ const styleSheet = createStyleSheet('TopOutfits', () => {
   };
 });
 
+const presets = [
+  {
+    'gender': 'male',
+    'articles': ['dark_pants', 'blue_fancy_shirt']
+  },
+  {
+    'gender': 'female',
+    'articles': ['jeans1', 'sportsshirt1']
+  },
+  {
+    'gender': 'female',
+    'articles': ['romper3']
+  },
+  {
+    'gender': 'male',
+    'articles': ['blue_pants', 'grey_shirt']
+  }
+]
+
 class TopOutfits extends Component {
   static contextTypes = {
     styleManager: customPropTypes.muiRequired,
   }
+
+  handleClick = (id, e) => {
+    modelStore.setGender(presets[id]['gender']);
+    modelStore.initLayers(presets[id]);
+    this.props.history.push('/' + presets[id]['gender'] + '/categories');
+  };
 
   render() {
     const classes = this.context.styleManager.render(styleSheet);
@@ -48,23 +73,30 @@ class TopOutfits extends Component {
       <div className={classes.container}>
         <Layout container className={classes.demo} justify="space-around" gutter={16}>
           <Layout key={0} item lg={3}>
-            <Card className={classes.card}>
+            <Card className={classes.card} onClick={() => this.handleClick(0)}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/items/female/tops_women/sportsshirt1_small.png" alt="TBD" />
+                <img  className={classes.cardImage} src="./img/landing/preset0.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
           <Layout key={1} item lg={3}>
-            <Card className={classes.card}>
+            <Card className={classes.card} onClick={() => this.handleClick(1)}>
               <CardMedia >
-                <img className={classes.cardImage} src="./img/items/female/tops_women/top1_small.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset1.png" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
           <Layout key={2} item lg={3}>
-            <Card className={classes.card}>
+            <Card className={classes.card} onClick={() => this.handleClick(2)}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/items/female/tops_women/top2_small.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset3.png" alt="TBD" />
+              </CardMedia>
+            </Card>
+          </Layout>
+          <Layout key={3} item lg={3}>
+            <Card className={classes.card} onClick={() => this.handleClick(3)}>
+              <CardMedia>
+                <img className={classes.cardImage} src="./img/landing/preset2.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>

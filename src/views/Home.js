@@ -10,6 +10,7 @@ import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
 import {Link} from 'react-router-dom';
 
+import './Home.scss';
 import TopOutfits from "./TopOutfits.js";
 import PreDefinedOutfits from "./PreDefinedOutfits.js";
 
@@ -18,7 +19,6 @@ const styleSheet = createStyleSheet('Home', (theme) => ({
     flexGrow: 1,
   },
   container: {
-    marginTop: 50,
     height: 720,
   },
   paper: {
@@ -52,10 +52,12 @@ class Home extends Component {
           <Layout item lg={6}>
             <Layout container align='flex-start' justify='space-around' gutter={0}>
               <Layout item lg={9}>
-                <TopOutfits />
+                <div className="title">Top Picks</div>
+                <TopOutfits history={this.props.history} />
               </Layout>
               <Layout item lg={9}>
-                <PreDefinedOutfits />
+                <div className="title">Community Favourites</div>
+                <PreDefinedOutfits history={this.props.history} />
               </Layout>
             </Layout>
           </Layout>

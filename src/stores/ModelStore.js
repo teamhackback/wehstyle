@@ -79,6 +79,13 @@ class ModelStore {
     return false;
   };
 
+  initLayers(preset) {
+    this.layers.clear();
+    this.layers.push(this.items[preset['gender']]);
+    preset['articles'].forEach(id => { this.layers.push(this.items[id])});
+    console.log(this.layers.slice());
+  }
+
   addLayerById(id) {
     const layer = this.items[id];
     const lid = layer.id;

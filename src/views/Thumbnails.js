@@ -65,6 +65,7 @@ class Thumbnails extends Component {
                 </Layout>
               )}
             </Layout>
+            <div className="Button Category-back">Category overview</div>
           </Layout>
         </Layout>
       </div>
