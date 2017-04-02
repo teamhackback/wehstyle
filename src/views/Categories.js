@@ -12,6 +12,8 @@ import {Link} from 'react-router-dom';
 
 import {observer} from 'mobx-react';
 
+import './Categories.scss';
+
 const styleSheet = createStyleSheet('Categories', () => {
   return {
     root: {

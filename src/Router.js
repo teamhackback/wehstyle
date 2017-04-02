@@ -7,11 +7,7 @@ import Layout from 'material-ui/Layout';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DevTool, { configureDevtool } from 'mobx-react-devtools';
 
-import HumanModel from './views/HumanModel';
-import Thumbnails from './views/Thumbnails';
-import Categories from './views/Categories';
-import {modelStore} from './stores/ModelStore';
-import Header from "./views/Header";
+import Customizer from "./views/Customizer";
 
 // Any configurations are optional
 configureDevtool({
@@ -30,16 +26,7 @@ export default (
     <MuiThemeProvider>
       <div className="App">
         <DevTool />
-          <Header></Header>
-            <div style={{display:"block", "float": "left"}}>
-              <HumanModel model={modelStore}></HumanModel>
-            </div>
-            <div style={{marginLeft: 300}}>
-              <Route exact path="/" component={Categories} />
-              {Object.values(modelStore.categories).map(cat =>
-                <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
-              )}
-          </div>
+        <Customizer></Customizer>
       </div>
     </MuiThemeProvider>
   </Router>
