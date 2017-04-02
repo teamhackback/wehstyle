@@ -51,11 +51,11 @@ const presets = [
   },
   {
     'gender': 'female',
-    'articles': ['romper3']
+    'articles': ['901195']
   },
   {
     'gender': 'male',
-    'articles': ['blue_pants', 'grey_shirt']
+    'articles': ['834333', '828622']
   }
 ]
 
