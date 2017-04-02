@@ -14,19 +14,37 @@ import {categories, items, GLOBAL_IMAGE_PATH, modelStore} from '../stores/ModelS
 const styleSheet = createStyleSheet('PreDefinedOutfits', () => {
   return {
     card: {
-      maxWidth: 190,
-      height: 260,
-      minHeight:260,
-      marginBottom: 24,
+      maxWidth: 150,
+      height: 150,
+      minHeight:150,
     },
     cardImage: {
-      maxWidth:190,
+      maxWidth:150,
       display: 'block',
       marginLeft: 'auto',
       marginRight: 'auto',
     }
   };
 });
+
+const presets = [
+  {
+    'gender': 'female',
+    'articles': ['romper2']
+  },
+  {
+    'gender': 'male',
+    'articles': ['superdry_sport_pants', 'orange_sports_shirt']
+  },
+  {
+    'gender': 'female',
+    'articles': ['bra1', 'shorts1']
+  },
+  {
+    'gender': 'male',
+    'articles': ['formal_pants', 'blue_fancy_shirt', 'formal_colbert']
+  }
+]
 
 class PreDefinedOutfits extends Component {
   static contextTypes = {
@@ -37,8 +55,10 @@ class PreDefinedOutfits extends Component {
     super(props);
   }
 
-  handleClick = (e) => {
-    console.log(e);
+  handleClick = (id, e) => {
+    modelStore.setGender(presets[id]['gender']);
+    modelStore.initLayers(presets[id]);
+    this.props.history.push('/' + presets[id]['gender'] + '/categories');
   };
 
   render() {
@@ -46,25 +66,32 @@ class PreDefinedOutfits extends Component {
 
     return (
       <div className={classes.container}>
-        <Layout container className={classes.demo} justify="space-around" gutter={16}>
-          <Layout key={0} item lg={3}>
-            <Card className={classes.card}>
+        <Layout container className={classes.demo} justify="space-around" gutter={0}>
+          <Layout key={0} item sm={3}>
+            <Card className={classes.card} onClick={() => this.handleClick(0)}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/items/female/tops_women/sportsshirt1_small.png" alt="TBD" />
+                <img  className={classes.cardImage} src="./img/landing/preset4.png" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
-          <Layout key={1} item lg={3}>
-            <Card className={classes.card}>
+          <Layout key={1} item sm={3}>
+            <Card className={classes.card} onClick={() => this.handleClick(1)}>
               <CardMedia >
-                <img className={classes.cardImage} src="./img/items/female/tops_women/top1_small.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset5.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
-          <Layout key={2} item lg={3}>
-            <Card className={classes.card}>
+          <Layout key={2} item sm={3}>
+            <Card className={classes.card} onClick={() => this.handleClick(2)}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/items/female/tops_women/top2_small.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset7.png" alt="TBD" />
+              </CardMedia>
+            </Card>
+          </Layout>
+          <Layout key={3} item sm={3}>
+            <Card className={classes.card} onClick={() => this.handleClick(3)}>
+              <CardMedia>
+                <img className={classes.cardImage} src="./img/landing/preset6.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>

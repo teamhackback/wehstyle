@@ -16,7 +16,7 @@ class LandingPage extends Component {
                 </div>
                 <div className="LandingPage-wrapper">
                     <Categories></Categories>
-                    <PopularItems></PopularItems>
+                    <PopularItems history={this.props.history}></PopularItems>
                 </div>
             </div>
         );
