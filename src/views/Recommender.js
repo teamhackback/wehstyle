@@ -21,7 +21,7 @@ export default class Recommmender extends Component {
       { preds.map(e =>
 
         <Layout key={e.id} item onClick={() => modelStore.addLayerById(e.name)}>
-          <Thumbnail style={{"maxWidth": 100, "maxHeight": 100}} articleId={e.name} />
+          <Thumbnail articleId={e.name} />
         </Layout>
       )}
       </Layout>

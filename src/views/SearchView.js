@@ -28,8 +28,8 @@ export default class Recommmender extends Component {
         <Layout container align='flex-start' justify='center' gutter={0}>
       { preds.map(e =>
 
-        <Layout key={e.id} item onClick={() => modelStore.addLayerById(e.name)}>
-          <Thumbnail style={{"maxWidth": 100, "maxHeight": 100}} articleId={e.name} />
+        <Layout key={e.id} style={{"paddingLeft": 10}} item onClick={() => modelStore.addLayerById(e.name)}>
+          <Thumbnail articleId={e.name} />
         </Layout>
       )}
       </Layout>
