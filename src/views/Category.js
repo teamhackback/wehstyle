@@ -23,16 +23,7 @@ const styleSheet = createStyleSheet('Categories', () => {
           width: 140,
           height: 140,
           position: 'relative'
-      },
-    avatarText: {
-      color: "white",
-      position: "absolute",
-      top: "50%",
-      width: "160px",
-      fontWeight: "bold",
-      transform: "translateY(-50%)",
-      textAlign: "center"
-    }
+      }
   };
 });
 
@@ -56,8 +47,7 @@ class Category extends Component {
           alt="Item"
           className={classes.bigAvatar}
           src={"/img/thumbnails/" + category.img.replace(".png", "_small.png")} />
-        <div className={classes.avatarText}>
-        </div>
+        
         </div>
       </Link>
     );
