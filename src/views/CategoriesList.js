@@ -20,7 +20,7 @@ class CategoriesList extends Component {
 
   render() {
     return (
-      <Layout container align='flex-start' justify='center' gutter={0}>
+      <Layout item lg={6} style={{marginLeft: "16vw"}} container align='flex-start' justify='center' gutter={4}>
         {Object.values(modelStore.categories).map(cat =>
           <Layout item key={cat.id}>
             <Category name={cat.name} gender={modelStore.gender} />
