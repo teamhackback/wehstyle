@@ -15,10 +15,10 @@ class Header extends Component {
       constructor(props) {
         super(props);
         this.state = {categoriesNames: [
-            { link: "#", name: "Kids"},
-            { link: "#", name: "Business"},
             { gender: "male", link: "/male/categories", name:  "Men"},
             { gender: "female", link: "/female/categories", name:"Women"},
+            { link: "#", name: "Kids"},
+            { link: "#", name: "Business"},
             { link: "#", name:"Teenagers"},
             { link: "#", name:  "Sports"}
           ]};
