@@ -47,7 +47,7 @@ const presets = [
   },
   {
     'gender': 'female',
-    'articles': ['jeans1', 'sportsshirt1']
+    'articles': ['875725']
   },
   {
     'gender': 'female',
@@ -87,7 +87,7 @@ class PopularItems extends Component {
           <Layout key={1} item xs={4}>
             <Card className={classes.card} onClick={() => this.handleClick(1)}>
               <CardMedia >
-                <img className={classes.cardImage} src="./img/landing/preset1.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset4.png" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
