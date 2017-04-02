@@ -71,6 +71,18 @@ const presets = [
     'gender': 'male',
     'articles': ['834333', '828622'],
     "img": "./img/landing/preset2_small.jpg"
+   },
+  {
+    id: 4,
+    'gender': 'male',
+    'articles': ['876651', '871665']
+  },
+  {
+     id: 5,
+    'gender': 'male',
+    'articles': ['828678', '852431', '864563']
+  }
+]
   }
 ]
 

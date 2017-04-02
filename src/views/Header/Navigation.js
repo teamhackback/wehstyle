@@ -18,7 +18,7 @@ class Navigation extends Component {
     logo() {
         return (
             <div className="Header-navigation-logo">
-            <a href="https://www.wehkamp.nl/">
+            <a href="/">
                <img className="Header-navigation-logo-img" src="//assets.wehkamp.com/i/wehkamp/wehkamp_grijs?w=360&amp;$png$" alt="eerst wehkamp.nl" />
             </a>
             </div>
