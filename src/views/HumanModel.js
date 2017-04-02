@@ -220,7 +220,7 @@ class HumanModel extends Component {
 
         { this.state.hoveredLayer && this.state.hoveredLayer.category !== "bodies" ?
             <ModelThumbnail model={this.state.hoveredLayer} />
-            : <div className="Customizer-current-category">Selecteer een kledingstuk</div>
+            : <div className="Customizer-current-category">Select clothing</div>
         }
       </div>
     );
