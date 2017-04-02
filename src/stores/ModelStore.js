@@ -1,7 +1,7 @@
 import {autorun, computed, observable} from 'mobx';
 
 import index from '../../public/img/items/index.json';
-import {forEachRight, includes, some} from 'lodash';
+import {forEachRight, includes, some, sortBy, take} from 'lodash';
 import fp from 'lodash/fp';
 
 const parts = index.parts;
@@ -102,6 +102,7 @@ class ModelStore {
   }
 
   @computed get recommendedItems() {
+    console.log("running pred");
     const status = [];
     this.layers.forEach((l, i) => {
       if (l.category === "bodies") {
@@ -109,23 +110,26 @@ class ModelStore {
       }
       status.push(l.category);
     });
-    const preds = Object.values(this.items).filter((l, i) => {
+    let preds = Object.values(this.items).filter((l, i) => {
       if (l.category === "bodies")
         return false;
-      if (some(status, (s) => {
-        return includes(parts[s], l.mapping);
+      if (some(this.layers, (s) => {
+          return s.id === l.id;
       }))
         return false;
-
-      if (fp.flow(
-          fp.tail,
-          fp.map('dominantColor'),
-          fp.filter(e => e === l.dominantColor)
-        )(this.layers))
-        return true;
-
-      return false;
+      return true;
+    }).map(l => {
+      return {sum: fp.tail(this.layers).reduce((m, e) => {
+        return m + Math.sqrt(
+          Math.pow(e.dominantColor[0] - l.dominantColor[0], 2)
+          + Math.pow(e.dominantColor[1] - l.dominantColor[1], 2)
+          + Math.pow(e.dominantColor[2] - l.dominantColor[2], 2)
+        )
+      }, 0)
+      , o: l};
     });
+    preds = sortBy(preds, 'sum');
+    preds = take(preds, 3).map(e => e.o);
     console.log("preds", preds);
     return preds;
   }

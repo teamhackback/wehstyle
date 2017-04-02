@@ -5,6 +5,7 @@ import Layout from 'material-ui/Layout';
 
 import {observer} from 'mobx-react';
 
+@observer
 export default class Recommmender extends Component {
   render() {
     if (modelStore.layers.length === 1)
@@ -20,7 +21,7 @@ export default class Recommmender extends Component {
       { preds.map(e =>
 
         <Layout key={e.id} item onClick={() => modelStore.addLayerById(e.name)}>
-          <Thumbnail style={{"maxWidth": 50, "maxHeight": 50}} articleId={e.name} />
+          <Thumbnail style={{"maxWidth": 100, "maxHeight": 100}} articleId={e.name} />
         </Layout>
       )}
       </Layout>

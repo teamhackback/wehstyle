@@ -39,6 +39,15 @@ categoriyMapping = {
     }
 }
 
+def hash_color(color):
+    groups = 3
+    color_group = list(map(lambda x: int(x * groups / 255), color))
+    color_group[1] += groups + 1 + 10
+    color_group[2] += groups * 2 + 20
+    color_group = sum(color_group)
+    return color_group
+    return color_group
+
 for gender in ["male", "female"]:
     inFolder = gender
     items = {}
@@ -61,6 +70,10 @@ for gender in ["male", "female"]:
             mapping = categoriyMapping[gender]["categories"][category]["mapping"]
         elif imName in categoriyMapping[gender]["products"]:
             mapping = categoriyMapping[gender]["products"][imName]["mapping"]
+        # palette = ct.get_palette(color_count=2)[0:2]
+        # values = list(map(hash_color, palette))
+        # print(values)
+        # color_group = sum(x + i * 100 for i, x in enumerate(values))
         items[imName] = {
             "id": i,
             "mapping": mapping,
@@ -74,7 +87,7 @@ for gender in ["male", "female"]:
             "src": path.abspath(filename).replace(absFolder, "")[1:],
             "thumbnail": path.abspath(filename).replace(absFolder, "")[1:].replace(".png", "_cropped.jpg"),
             "category": category,
-            "dominantColor": dominant_color.index(max(dominant_color))
+            "dominantColor": dominant_color
         }
         cropped = im.crop(box)
         background = Image.new("RGB", cropped.size, (255, 255, 255))
