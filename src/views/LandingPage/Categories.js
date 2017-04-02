@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './Categories.scss';
 
 class Categories extends Component {
-    categories = [ "Men", "Women", "Kids", "Business", "Teenagers", "Sports" ];
+    categories = [ "men", "women", "kids", "business", "teenagers", "sports" ];
 
     getCategoryElement(text) {
         return(
