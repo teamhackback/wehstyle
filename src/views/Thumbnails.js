@@ -36,16 +36,12 @@ class Thumbnails extends Component {
     styleManager: customPropTypes.muiRequired,
   }
 
-  constructor(props) {
-    super(props);
-    const category = props.match.params.catid;
-    this.state = {
-      articles: modelStore.categories[category].products || []
-    };
-  }
-
   componentWillMount(){
     modelStore.setGender(this.props.location.pathname.split("/")[1]);
+    const category = this.props.match.params.catid;
+    this.setState({
+      articles: modelStore.categories[category].products || []
+    });
   }
 
   render() {
