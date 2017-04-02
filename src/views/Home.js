@@ -48,24 +48,14 @@ class Home extends Component {
 
     return (
       <div className={classes.container}>
-        <Layout container align='center' justify='center' gutter={0}>
+        <Layout container align='flex-start' justify='center' gutter={0}>
           <Layout item lg={6}>
-            <Layout container align='center' justify='center' gutter={0}>
+            <Layout container align='flex-start' justify='space-around' gutter={0}>
               <Layout item lg={9}>
                 <TopOutfits />
               </Layout>
               <Layout item lg={9}>
                 <PreDefinedOutfits />
-              </Layout>
-            </Layout>
-          </Layout>
-          <Layout item lg={6}>
-            <Layout container align='center' justify='center' gutter={0}>
-              <Layout item lg={9}>
-                <Paper className={classes.paper}>Design your own</Paper>
-              </Layout>
-              <Layout item lg={9}>
-                <Paper className={classes.paper}>Smart outfit designer</Paper>
               </Layout>
             </Layout>
           </Layout>

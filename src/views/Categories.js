@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom';
 
 import {observer} from 'mobx-react';
 
-import './Categories.scss';
+import CategoriesList from './CategoriesList';
 import './Customizer.scss';
 import HumanModel from './HumanModel';
 import Recommender from './Recommender';
@@ -57,17 +57,7 @@ class Categories extends Component {
             <SearchView />
             <Recommender />
               <div className="Title">Select category</div>
-              <Layout container align='flex-start' justify='center' gutter={12}>
-                {Object.values(modelStore.categories).map(cat =>
-                  <Layout item key={cat.id}>
-                    <Link to={"/" + modelStore.gender + "/category/" + cat.name}>
-                      <Paper className={classes.paper}>
-                        <Text>{cat.name}</Text>
-                      </Paper>
-                    </Link>
-                  </Layout>
-                )}
-              </Layout>
+              <CategoriesList />
             </Layout>
         </Layout>
       
