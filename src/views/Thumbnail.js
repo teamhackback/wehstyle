@@ -47,7 +47,7 @@ class Thumbnail extends Component {
             <CardMedia>
           <div className="bigAvatar">
         <Avatar
-          alt="Remy Sharp"
+          alt="Item"
           src={modelStore.imageThumbnail(modelStore.items[this.props.articleId])}
           className={classes.bigAvatar}
         />
