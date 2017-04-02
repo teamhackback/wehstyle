@@ -66,6 +66,7 @@ class Thumbnail extends Component {
 
   render() {
     const classes = this.context.styleManager.render(styleSheet);
+    const model = modelStore.items[this.props.articleId];
 
     return (
       <Card className={classes.card} style={this.props.style}>
@@ -73,12 +74,12 @@ class Thumbnail extends Component {
           <div className="bigAvatar">
         <Avatar
           alt="Item"
-          src={modelStore.imageThumbnail(modelStore.items[this.props.articleId])}
+          src={modelStore.imageThumbnail(model)}
           className={classes.bigAvatar}
         />
       </div>
               </CardMedia>
-        <div className={classes.cardImageTitle}>Test</div>
+        <div className={classes.cardImageTitle}>{model.fulltext.slice(0, 25)}</div>
       </Card>
     );
   }

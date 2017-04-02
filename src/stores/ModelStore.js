@@ -153,7 +153,9 @@ class ModelStore {
           return s.id === l.id;
       }))
         return false;
-      return l.name.toLowerCase().indexOf(search) >= 0;
+      return l.name.toLowerCase().indexOf(search) >= 0 ||
+             l.meta.toLowerCase().indexOf(search) >= 0 ||
+             l.fulltext.toLowerCase().indexOf(search) >= 0;
   });
   }
 }
