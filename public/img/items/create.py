@@ -13,12 +13,12 @@ absFolder= path.abspath(inFolder)
 i = 0
 categories = {}
 
-for filename in glob.glob("%s/**/*.png" % inFolder, recursive=True):
+for filename in glob.glob("%s/**/*_small.png" % inFolder, recursive=True):
     ct = ColorThief(filename)
     dominant_color = ct.get_color(quality=1)
     im = Image.open(filename)
     print("Reading: %s" % filename)
-    imName = path.basename(path.abspath(filename).replace(absFolder, "")).replace(".png", "")
+    imName = path.basename(path.abspath(filename).replace(absFolder, "")).replace(".png", "").replace("_small", "")
     # transparent pixels are not non-zero
     im = im.convert("RGBa")
     box = im.getbbox()
