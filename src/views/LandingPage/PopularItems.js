@@ -56,6 +56,14 @@ const presets = [
   {
     'gender': 'male',
     'articles': ['834333', '828622']
+  },
+  {
+    'gender': 'male',
+    'articles': ['876651', '871665']
+  },
+  {
+    'gender': 'male',
+    'articles': ['828678', '852431', '864563']
   }
 ]
 
