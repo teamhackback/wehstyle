@@ -17,13 +17,38 @@ const styleSheet = createStyleSheet('Thumbnail', () => {
       height: 160,
       minHeight: 140,
       marginBottom: 24,
+      border: "1px dashed #e1e1e1",
+      boxShadow: "none",
+      position: "relative",
+      cursor: "pointer"
+    },
+    cardMedia: {
     },
     cardImage: {
       display: 'block',
       marginLeft: 'auto',
       marginRight: 'auto',
+      position: 'absolute',
+      transform: 'translate(-50%,-50%)',
+      maxWidth: "100%",
+      maxHeight: "100%"
     },
-    avatar: {
+    cardImageTitle: {
+      paddingTop: "10px",
+      paddingBottom: "10px",
+      width: "100%",
+      textAlign: "center",
+      opacity: 0.8,
+      backgroundColor: "rgba(112,112,112,.9)",
+      top: "75%",
+      color: "white",
+      transform: "translateY(-50%)",
+      position: "absolute",
+      fontSize: "14px",
+      lineHeight: "24px",
+      height: "24px"
+   },
+      avatar: {
       margin: 10,
     },
     bigAvatar: {
@@ -44,7 +69,7 @@ class Thumbnail extends Component {
 
     return (
       <Card className={classes.card} style={this.props.style}>
-            <CardMedia>
+            <CardMedia className={classes.cardMedia} style={this.props.style}>
           <div className="bigAvatar">
         <Avatar
           alt="Item"
@@ -53,6 +78,7 @@ class Thumbnail extends Component {
         />
       </div>
               </CardMedia>
+        <div className={classes.cardImageTitle}>Test</div>
       </Card>
     );
   }

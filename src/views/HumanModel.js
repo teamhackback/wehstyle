@@ -195,13 +195,7 @@ class HumanModel extends Component {
   render() {
     return (
       <div onMouseOut={this.onMouseOut}>
-        <div className="ButtonWrapper">
-          <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
-          <Button type="button" onClick={this.downloadClick}>Download</Button>
-          <Button type="button" onClick={this.shareClick}>Share</Button>
-          <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
-        </div>
-        <div style={{"width": 363, marginLeft: "11vw"}}>
+        <div style={{"width": 363, marginLeft: "11vw", "float": "left"}}>
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={styles[modelStore.gender].parentDiv}
           ref={(node) => this.modelNode = node}
         >
@@ -222,6 +216,12 @@ class HumanModel extends Component {
             <ModelThumbnail model={this.state.hoveredLayer} />
             : <div className="Customizer-current-category">Select clothing</div>
         }
+        <div className="ButtonWrapper">
+          <div className="Button" onClick={this.imageUploadClick}>Upload</div>
+          <div className="Button" onClick={this.downloadClick}>Download</div>
+          <div className="Button" type="button" onClick={this.shareClick}>Share</div>
+          <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
+        </div>
       </div>
     );
   }
