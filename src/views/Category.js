@@ -8,6 +8,8 @@ import Customizer from "./Customizer";
 import {modelStore} from '../stores/ModelStore';
 import {mapValues} from 'lodash';
 import {transititonTo} from 'react-router';
+
+import Avatar from 'material-ui/Avatar';
 import {Link} from 'react-router-dom';
 
 const styleSheet = createStyleSheet('Categories', () => {
@@ -16,6 +18,11 @@ const styleSheet = createStyleSheet('Categories', () => {
       height: 150,
       width: 150,
     },
+    bigAvatar: {
+      margin: 10,
+      width: 140,
+      height: 140,
+    }
   };
 });
 
@@ -33,9 +40,18 @@ class Category extends Component {
 
     return (
       <Link to={"/" + this.props.gender + "/category/" + this.props.name}>
-        <Paper className={classes.paper}>
-          <Text>{this.props.name}</Text>
-        </Paper>
+        <div className="bigAvatar">
+        <Avatar
+          alt="Item"
+          className={classes.bigAvatar}
+          src="/img/items/circle.png" />
+        <div style={{
+          "textDecoration": "none",
+          "textAlign": "center",
+          "color": "black"
+        }}>{this.props.name}
+        </div>
+        </div>
       </Link>
     );
   }

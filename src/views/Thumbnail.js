@@ -8,12 +8,14 @@ import {
   CardMedia,
 } from 'material-ui/Card';
 
+import Avatar from 'material-ui/Avatar';
+
 const styleSheet = createStyleSheet('Thumbnail', () => {
   return {
     card: {
-      width: "135px",
-      height: 260,
-      minHeight:260,
+      maxWidth: 160,
+      height: 160,
+      minHeight: 140,
       marginBottom: 24,
       border: "1px dashed #e1e1e1",
       boxShadow: "none",
@@ -21,10 +23,6 @@ const styleSheet = createStyleSheet('Thumbnail', () => {
       cursor: "pointer"
     },
     cardMedia: {
-      height: "90%",
-      width: "90%",
-      top: "50%",
-      left: "50%"
     },
     cardImage: {
       display: 'block',
@@ -49,7 +47,15 @@ const styleSheet = createStyleSheet('Thumbnail', () => {
       fontSize: "14px",
       lineHeight: "24px",
       height: "24px"
-    }
+   },
+      avatar: {
+      margin: 10,
+    },
+    bigAvatar: {
+      margin: 10,
+      width: 140,
+      height: 140,
+    },
   };
 });
 
@@ -64,7 +70,13 @@ class Thumbnail extends Component {
     return (
       <Card className={classes.card} style={this.props.style}>
             <CardMedia className={classes.cardMedia} style={this.props.style}>
-              <img className={classes.cardImage} src={modelStore.imageThumbnail(modelStore.items[this.props.articleId])} alt="TBD" />
+          <div className="bigAvatar">
+        <Avatar
+          alt="Item"
+          src={modelStore.imageThumbnail(modelStore.items[this.props.articleId])}
+          className={classes.bigAvatar}
+        />
+      </div>
               </CardMedia>
         <div className={classes.cardImageTitle}>Test</div>
       </Card>
