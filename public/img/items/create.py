@@ -34,6 +34,7 @@ for gender in ["male", "female"]:
                 "right": box[2],
                 "lower": box[3]
             },
+            "name": imName,
             "src": path.abspath(filename).replace(absFolder, "")[1:],
             "thumbnail": path.abspath(filename).replace(absFolder, "")[1:].replace(".png", "_cropped.jpg"),
             "category": category,
