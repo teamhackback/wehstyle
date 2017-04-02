@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
   Route
@@ -14,18 +14,24 @@ import LandingPage from "./views/LandingPage";
 //import DevTool, { configureDevtool } from 'mobx-react-devtools';
 // Any configurations are optional
 //configureDevtool({
-  //// Turn on logging changes button programmatically:
-  //logEnabled: true,
-  //// Turn off displaying conponents' updates button programmatically:
-  //updatesEnabled: false,
-  //// Log only changes of type `reaction`
-  //// (only affects top-level messages in console, not inside groups)
-  //logFilter: change => change.type === 'reaction',
+//// Turn on logging changes button programmatically:
+//logEnabled: true,
+//// Turn off displaying conponents' updates button programmatically:
+//updatesEnabled: false,
+//// Log only changes of type `reaction`
+//// (only affects top-level messages in console, not inside groups)
+//logFilter: change => change.type === 'reaction',
 //});
 
 
-        //<DevTool />
-export default (
+//<DevTool />
+class App extends Component {
+  componentWillMount() {
+    document.getElementById("love").style.display = "block";
+  }
+
+  render() {
+    return (
   <Router>
     <MuiThemeProvider>
       <div className="App">
@@ -35,9 +41,12 @@ export default (
           <div key={gender}>
             <Route path={"/" + gender + "/categories"} component={Categories} />
             <Route path={"/" + gender + "/category/:catid"} component={Thumbnails} />
-        </div>
+          </div>
         )}
       </div>
     </MuiThemeProvider>
   </Router>
-);
+  );
+  }
+};
+export default App;

@@ -264,7 +264,7 @@ categoriyMapping = {
    "FileId": 860709,
    "Name": "Scotch & Soda sweater",
    "Meta": "sweater scotch soda",
-    "mapping": "top",
+    "mapping": "bottom",
    "link": "https://www.wehkamp.nl/herenmode/heren-truien/heren-sweaters/scotch-soda-sweater/C22_2B1_SWE_860709/"
  },
  {

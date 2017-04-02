@@ -10,5 +10,89 @@
   </head>
   <body>
     <div id="root"></div>
+
+	<style>
+.withLove {
+  overflow: hidden;
+  text-align: center;
+  /*padding-bottom: 2em;*/
+  cursor: default;
+  /*color: #616c84;*/
+  color: black;
+  padding-bottom: 10px;
+}
+.withLove * {
+  display: inline-block;
+}
+.withLove .alpha,
+.withLove .omega {
+  width: 40%;
+}
+.withLove .alpha {
+  text-align: right;
+}
+.withLove .omega {
+  text-align: left;
+}
+.withLove .heart {
+  margin: 0 -2px;
+  position: relative;
+  z-index: 3;
+  -webkit-animation: throb 1.33s ease-in-out infinite;
+  animation: throb 1.33s ease-in-out infinite;
+}
+.withLove .heart path {
+  fill: #ff005d;
+}
+.withLove a {
+	text-decoration: none;
+	color: block;
+}
+@media screen and (min-width: 300px) {
+  .withLove .heart {
+    width: 30px;
+    height: 30px;
+    top: .66em;
+  }
+}
+@media screen and (min-width: 460px) {
+  .withLove .heart {
+    top: .8em;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@-webkit-keyframes throb {
+  0% {
+    -webkit-transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(0.8);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes throb {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+	</style>
+<div id="love" style="display: none" class="withLove"><span class="alpha">Made with</span> <svg class="heart" enable-background="new 0 0 92.515 73.161" height="73.161px" version="1.1" viewBox="0 0 92.515 73.161" width="92.515px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"> <g> <path d="M82.32,7.888c-8.359-7.671-21.91-7.671-30.271,0l-5.676,5.21l-5.678-5.21c-8.357-7.671-21.91-7.671-30.27,0
+c-9.404,8.631-9.404,22.624,0,31.255l35.947,32.991L82.32,39.144C91.724,30.512,91.724,16.52,82.32,7.888z" fill="#010101"></path> </g> </svg> <span class="omega">by <a href="http://hackback.tech">HackBack</a></span></div>
   </body>
 </html>
