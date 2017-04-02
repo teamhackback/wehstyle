@@ -16,9 +16,17 @@ import SearchView from './SearchView';
 
 const styleSheet = createStyleSheet('Thumbnails', () => {
   return {
-    root: {
-      flexGrow: 1,
+    card: {
+      maxWidth: 190,
+      height: 260,
+      minHeight:260,
+      marginBottom: 24,
     },
+    cardImage: {
+      display: 'block',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    }
   };
 });
 
@@ -58,7 +66,7 @@ class Thumbnails extends Component {
               {this.state.articles.map(article =>
                 <Layout key={article} item onClick={() => modelStore.addLayerById(article)}>
                   <Thumbnail articleId={article} />
-                    </Layout>
+                </Layout>
               )}
             </Layout>
           </Layout>

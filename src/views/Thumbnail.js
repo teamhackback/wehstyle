@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import customPropTypes from 'material-ui/utils/customPropTypes';
 import {modelStore} from '../stores/ModelStore';
 import { createStyleSheet } from 'jss-theme-reactor';
 
@@ -7,24 +8,34 @@ import {
   CardMedia,
 } from 'material-ui/Card';
 
-const classes = {
+const styleSheet = createStyleSheet('Thumbnail', () => {
+  return {
     card: {
-      maxWidth: 200,
+      maxWidth: 190,
+      height: 260,
+      minHeight:260,
+      marginBottom: 24,
     },
     cardImage: {
-      maxWidth: 200,
-    },
-};
+      display: 'block',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    }
+  };
+});
 
 class Thumbnail extends Component {
-  //static propTypes = {
-    //articleId: React.PropTypes.string,
-  //}
-  render(){
+  static contextTypes = {
+    styleManager: customPropTypes.muiRequired,
+  }
+
+  render() {
+    const classes = this.context.styleManager.render(styleSheet);
+
     return (
-      <Card style={classes.card} style={this.props.style}>
+      <Card className={classes.card} style={this.props.style}>
             <CardMedia>
-              <img style={classes.cardImage} src={modelStore.imageThumbnail(modelStore.items[this.props.articleId])} alt="TBD" />
+              <img className={classes.cardImage} src={modelStore.imageThumbnail(modelStore.items[this.props.articleId])} alt="TBD" />
               </CardMedia>
       </Card>
     );

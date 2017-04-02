@@ -12,17 +12,18 @@ import {modelStore} from '../stores/ModelStore';
 
 const styleSheet = createStyleSheet('TopOutfits', () => {
   return {
-    root: {
-      flexGrow: 1,
-    },
     card: {
-      height: 200,
-      maxHeight: 200,
+      maxWidth: 190,
+      height: 260,
+      minHeight:260,
+      marginBottom: 24,
     },
     cardImage: {
-      height: 200,
-      maxHeight: 200,
-    },
+      maxWidth:190,
+      display: 'block',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    }
   };
 });
 
@@ -35,31 +36,31 @@ class TopOutfits extends Component {
     const classes = this.context.styleManager.render(styleSheet);
 
     return (
-      <Layout item xs={12}>
-        <Layout container className={classes.demo} justify="center" gutter={24}>
+      <div className={classes.container}>
+        <Layout container className={classes.demo} justify="space-around" gutter={16}>
           <Layout key={0} item lg={3}>
             <Card className={classes.card}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/items/female/tops_women/sportsshirt1.png" alt="TBD" />
+                <img  className={classes.cardImage} src="./img/items/female/tops_women/sportsshirt1_small.png" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
           <Layout key={1} item lg={3}>
             <Card className={classes.card}>
               <CardMedia >
-                <img className={classes.cardImage} src="./img/items/female/tops_women/top1.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/items/female/tops_women/top1_small.png" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
           <Layout key={2} item lg={3}>
             <Card className={classes.card}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/items/female/tops_women/top2.png" alt="TBD" />
+                <img  className={classes.cardImage} src="./img/items/female/tops_women/top2_small.png" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
         </Layout>
-      </Layout>
+      </div>
     );
   }
 }

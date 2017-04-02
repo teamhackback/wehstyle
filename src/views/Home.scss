@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'HarrietDisplayLight';
+  src: url('/fonts/f788dba4.harrietdisplaylight.eot?v=1#iefix');
+  src: url('/fonts/f788dba4.harrietdisplaylight.eot?v=1#iefix') format('embedded-opentype'),
+  url('/fonts/cc7bc11c.harrietdisplaylight.woff?v=1') format('woff'),
+  url('/fonts/fbedb923.harrietdisplaylight.ttf?v=1') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+.title {
+  width: 100%;
+  font: normal 28px/1.4 HarrietDisplayLight;
+  float: left;
+  text-align: center;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 15px;
+}
