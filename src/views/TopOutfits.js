@@ -12,18 +12,27 @@ import {modelStore} from '../stores/ModelStore';
 
 const styleSheet = createStyleSheet('TopOutfits', () => {
   return {
-    card: {
-      maxWidth: 190,
-      height: 260,
-      minHeight:260,
-      marginBottom: 24,
-    },
-    cardImage: {
-      maxWidth:190,
-      display: 'block',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    }
+      card: {
+          width: "170px",
+          height: 375,
+          minHeight:260,
+          marginBottom: 24,
+          border: "1px dashed #e1e1e1",
+          boxShadow: "none",
+          position: "relative",
+          cursor: "pointer"
+      },
+      cardMedia: {
+          top: "50%",
+          left: "50%"
+      },
+      cardImage: {
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          position: 'absolute',
+          transform: 'translate(-50%,-50%)'
+      }
   };
 });
 
