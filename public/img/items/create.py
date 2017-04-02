@@ -9,6 +9,36 @@ import json
 
 obj = {}
 
+categoriyMapping = {
+    "female": {
+        "categories": {
+            "bottoms_women": {
+                "mapping": "bottom"
+            },
+            "romper_women": {
+                "mapping": "whole"
+            },
+            "tops_women": {
+                "mapping": "top"
+            }
+        },
+        "products": {
+        }
+    },
+    "male": {
+        "categories": {
+            "pants": {
+                "mapping": "bottom"
+            },
+            "shirts": {
+                "mapping": "top"
+            }
+        },
+        "products": {
+        }
+    }
+}
+
 for gender in ["male", "female"]:
     inFolder = gender
     items = {}
@@ -26,8 +56,14 @@ for gender in ["male", "female"]:
         im = im.convert("RGBa")
         box = im.getbbox()
         category = path.basename(path.dirname(filename))
+        mapping = "whole"
+        if category in categoriyMapping[gender]["categories"]:
+            mapping = categoriyMapping[gender]["categories"][category]["mapping"]
+        elif imName in categoriyMapping[gender]["products"]:
+            mapping = categoriyMapping[gender]["products"][imName]["mapping"]
         items[imName] = {
             "id": i,
+            "mapping": mapping,
             "cropping": {
                 "left": box[0],
                 "upper": box[1],
@@ -56,8 +92,16 @@ for gender in ["male", "female"]:
 
     obj[gender] = {
         "items": items,
-        "categories": categories
+        "categories": categories,
+
     }
+
+obj["parts"] = {
+    "tie": [],
+    "bottom": ["whole"],
+    "top": ["whole"],
+    "whole": ["bottom", "top", "tie"],
+}
 with open("index.json", "w") as out:
     json.dump(obj, out)
 
