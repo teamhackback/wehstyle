@@ -55,6 +55,7 @@ class Categories extends Component {
             </Layout>
             <Layout item lg={6}>
             <SearchView />
+            <Recommender />
               <div className="Title">Select category</div>
               <Layout container align='flex-start' justify='center' gutter={12}>
                 {Object.values(modelStore.categories).map(cat =>

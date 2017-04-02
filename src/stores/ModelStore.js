@@ -43,6 +43,7 @@ class ModelStore {
       return;
     this.gender = gender;
     this.layers.clear();
+    this.searchTerm = "";
     this.layers.push(this.items[gender]);
   }
   @computed get items() {
