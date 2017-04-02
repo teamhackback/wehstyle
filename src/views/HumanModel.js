@@ -164,7 +164,8 @@ class HumanModel extends Component {
   };
 
   downloadClick = () => {
-    domtoimage.toBlob(this.modelNode).then((blob) => {
+    const style = {marginLeft: "0px"};
+    domtoimage.toBlob(this.modelNode, {"bgcolor": "white", style : style}).then((blob) => {
       saveAs(blob, 'my-node.jpg');
     });
   };

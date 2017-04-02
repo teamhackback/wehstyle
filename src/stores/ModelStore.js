@@ -81,11 +81,16 @@ class ModelStore {
 
   addLayerById(id) {
     const layer = this.items[id];
-    const excludeId = this.layers.length;
-    if (this.layers.slice().filter(l => l.name === id).length == 0) {
-      this.layers.push(layer);
+    const lid = layer.id;
+    if (this.layers.slice().filter(l => l.name === id).length === 0) {
+      if (layer.mapping === "bottom") {
+        this.layers.splice(1, 0, layer);
+      } else {
+        this.layers.push(layer);
+      }
+
       this.layers.filter((l, i) => {
-        if (i === excludeId)
+        if (l.id === lid)
           return false;
         if (l.category === "bodies") {
           return false;
