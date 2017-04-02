@@ -171,7 +171,8 @@ class HumanModel extends Component {
   };
 
   shareClick = () => {
-    domtoimage.toBlob(this.modelNode, {quality: 0.95}).then((blob) => {
+    const style = {marginLeft: "0px"};
+    domtoimage.toBlob(this.modelNode, {quality: 0.95, "bgcolor": "white", style : style}).then((blob) => {
       const xhr = new XMLHttpRequest();
       xhr.open('POST', 'https://wehstyle.hackback.tech/api/upload', true);
       var form = new FormData();
@@ -183,7 +184,7 @@ class HumanModel extends Component {
           const e = JSON.parse(this.responseText);
           const text = encodeURI("I just created this new Wehstyle model:");
           const url = encodeURI(e.html);
-          const hashtags= encodeURI(["WehStyle", "Wehkamp", "HexTBD2017"].join(","));
+          const hashtags= encodeURI(["WehStyle", "Wehkamp", "hex2017"].join(","));
           const twitter = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
           window.open(twitter,'_blank');
         }
@@ -214,7 +215,7 @@ class HumanModel extends Component {
 
         { this.state.hoveredLayer && this.state.hoveredLayer.category !== "bodies" ?
             <ModelThumbnail model={this.state.hoveredLayer} />
-            : <div className="Customizer-current-category">Select clothing</div>
+            : <div className="Customizer-current-category">Hover over clothing</div>
         }
         <div className="ButtonWrapper">
           <div className="Button" onClick={this.imageUploadClick}>Upload</div>
