@@ -22,7 +22,7 @@ class CategoriesList extends Component {
     return (
       <Layout container align='flex-start' justify='center' gutter={0}>
         {Object.values(modelStore.categories).map(cat =>
-          <Layout item key={cat.id} lg={3}>
+          <Layout item key={cat.id}>
             <Category name={cat.name} gender={modelStore.gender} />
           </Layout>
         )}

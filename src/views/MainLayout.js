@@ -36,10 +36,10 @@ export default class MainLayout extends Component {
             <Header></Header>
           <DevTool />
           <Layout container gutter={24}>
-              <Layout item xs={12} lg={6}>
+              <Layout item xs={12} lg={4}>
                 <HumanModel model={modelStore}></HumanModel>
               </Layout>
-              <Layout item xs={12} lg={6}>
+              <Layout item xs={12} lg={8}>
                 {this.props.children || <Categories></Categories>}
               </Layout>
           </Layout>

@@ -33,16 +33,11 @@ class Customizer extends Component {
     humanModel() {
         return (
             <div className="Customizer-left">
-                <div className="Title">Your outfit</div>
+                <div className="Title-outfit">Your outfit</div>
                 <div className="Customizer-left-model">
                     <HumanModel model={modelStore}></HumanModel>
                 </div>
             </div>);
-    }
-    shareButtons() {
-        return (
-            <FacebookShareButton url={shareUrl} picture={imageUrl} description={description} title={title} />
-        );
     }
     items() {
         return (
@@ -50,7 +45,6 @@ class Customizer extends Component {
                 <Recommender />
                 <div className="Title">Select category</div>
                 <Categories />
-                {this.shareButtons()}
             </div>
         );
     }
