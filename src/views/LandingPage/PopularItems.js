@@ -10,6 +10,8 @@ import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
 import { modelStore } from '../../stores/ModelStore';
 import './PopularItems.scss';
+import Avatar from 'material-ui/Avatar';
+
 
 const styleSheet = createStyleSheet('PopularItems', () => {
   return {
@@ -36,26 +38,39 @@ const styleSheet = createStyleSheet('PopularItems', () => {
       marginRight: 'auto',
       position: 'absolute',
       maxWidth: 200
+    },
+    bigAvatar: {
+      margin: 10,
+      width: 180,
+      height: 180,
     }
   };
 });
 
 const presets = [
   {
+    id: 0,
     'gender': 'male',
-    'articles': ['860709', '852431']
+    'articles': ['860709', '852431'],
+    "img": "./img/landing/preset0_small.jpg"
   },
   {
+    id: 1,
     'gender': 'female',
-    'articles': ['875725']
+    'articles': ['875725'],
+    "img": "./img/landing/preset4_small.jpg"
   },
   {
+    id: 2,
     'gender': 'female',
-    'articles': ['901195']
+    'articles': ['901195'],
+    "img": "./img/landing/preset3_small.jpg"
   },
   {
+    id: 3,
     'gender': 'male',
-    'articles': ['834333', '828622']
+    'articles': ['834333', '828622'],
+    "img": "./img/landing/preset2_small.jpg"
   }
 ]
 
@@ -77,34 +92,21 @@ class PopularItems extends Component {
       <div className={classes.container}>
         <div className="Title">Top picks</div>
         <Layout container className={classes.demo} justify="flex-start" gutter={24}>
-          <Layout key={0} item xs={6}>
-            <Card className={classes.card} onClick={() => this.handleClick(0)}>
+          { presets.map(preset =>
+          <Layout key={preset.id} item xs={6}>
+            <Card className={classes.card} onClick={() => this.handleClick(preset.id)}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/landing/preset0_small.jpg" alt="TBD" />
+
+                <div className="bigAvatar">
+        <Avatar
+          alt="Item"
+          src={preset.img}
+          className={classes.bigAvatar} />
+                </div>
               </CardMedia>
             </Card>
           </Layout>
-          <Layout key={1} item xs={6}>
-            <Card className={classes.card} onClick={() => this.handleClick(1)}>
-              <CardMedia >
-                <img className={classes.cardImage} src="./img/landing/preset4_small.jpg" alt="TBD" />
-              </CardMedia>
-            </Card>
-          </Layout>
-          <Layout key={2} item xs={6}>
-            <Card className={classes.card} onClick={() => this.handleClick(2)}>
-              <CardMedia>
-                <img className={classes.cardImage} src="./img/landing/preset3_small.jpg" alt="TBD" />
-              </CardMedia>
-            </Card>
-          </Layout>
-          <Layout key={3} item xs={6}>
-            <Card className={classes.card} onClick={() => this.handleClick(3)}>
-              <CardMedia>
-                <img className={classes.cardImage} src="./img/landing/preset2_small.jpg" alt="TBD" />
-              </CardMedia>
-            </Card>
-          </Layout>
+          )}
         </Layout>
       </div>
     );
