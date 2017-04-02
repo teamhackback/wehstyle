@@ -69,20 +69,20 @@ const presets = [
   {
     id: 3,
     'gender': 'male',
+<<<<<<< HEAD
     'articles': ['834333', '828622'],
     "img": "./img/landing/preset2_small.jpg"
-   },
-  {
-    id: 4,
-    'gender': 'male',
-    'articles': ['876651', '871665'],
-    "img": "./img/landing/preset5_small.jpg"
+=======
+    'articles': ['834333', '828622']
   },
   {
-     id: 5,
     'gender': 'male',
-    'articles': ['828678', '852431', '864563'],
-    "img": "./img/landing/preset6_small.jpg"
+    'articles': ['876651', '871665']
+  },
+  {
+    'gender': 'male',
+    'articles': ['828678', '852431', '864563']
+>>>>>>> 351204aea61003a41412c9a6dc3906ff07217b85
   }
 ]
 
