@@ -77,31 +77,31 @@ class PopularItems extends Component {
       <div className={classes.container}>
         <div className="Title">Top picks</div>
         <Layout container className={classes.demo} justify="flex-start" gutter={24}>
-          <Layout key={0} item xs={4}>
+          <Layout key={0} item xs={6}>
             <Card className={classes.card} onClick={() => this.handleClick(0)}>
               <CardMedia>
-                <img  className={classes.cardImage} src="./img/landing/preset0.jpg" alt="TBD" />
+                <img  className={classes.cardImage} src="./img/landing/preset0_small.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
-          <Layout key={1} item xs={4}>
+          <Layout key={1} item xs={6}>
             <Card className={classes.card} onClick={() => this.handleClick(1)}>
               <CardMedia >
-                <img className={classes.cardImage} src="./img/landing/preset4.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset4_small.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
-          <Layout key={2} item xs={4}>
+          <Layout key={2} item xs={6}>
             <Card className={classes.card} onClick={() => this.handleClick(2)}>
               <CardMedia>
-                <img className={classes.cardImage} src="./img/landing/preset3.png" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset3_small.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
-          <Layout key={3} item xs={4}>
+          <Layout key={3} item xs={6}>
             <Card className={classes.card} onClick={() => this.handleClick(3)}>
               <CardMedia>
-                <img className={classes.cardImage} src="./img/landing/preset2.jpg" alt="TBD" />
+                <img className={classes.cardImage} src="./img/landing/preset2_small.jpg" alt="TBD" />
               </CardMedia>
             </Card>
           </Layout>
