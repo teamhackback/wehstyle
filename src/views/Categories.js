@@ -16,6 +16,7 @@ import {observer} from 'mobx-react';
 import './Categories.scss';
 import './Customizer.scss';
 import HumanModel from './HumanModel';
+import Recommender from './Recommender';
 
 const styleSheet = createStyleSheet('Categories', () => {
   return {

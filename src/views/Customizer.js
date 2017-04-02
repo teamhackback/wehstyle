@@ -3,6 +3,7 @@ import Header from './Header';
 import HumanModel from './HumanModel';
 import Thumbnails from './Thumbnails';
 import Categories from './Categories';
+import Recommender from './Recommender';
 import {modelStore} from '../stores/ModelStore';
 import {ShareButtons} from 'react-share';
 
@@ -46,8 +47,9 @@ class Customizer extends Component {
     items() {
         return (
             <div className="Customizer-right">
+                <Recommender />
                 <div className="Title">Select category</div>
-                <Categories></Categories>
+                <Categories />
                 {this.shareButtons()}
             </div>
         );

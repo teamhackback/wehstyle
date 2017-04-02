@@ -1,7 +1,8 @@
 import {autorun, computed, observable} from 'mobx';
 
 import index from '../../public/img/items/index.json';
-import {forEachRight, includes} from 'lodash';
+import {forEachRight, includes, some} from 'lodash';
+import fp from 'lodash/fp';
 
 const parts = index.parts;
 
@@ -76,26 +77,57 @@ class ModelStore {
   addLayerById(id) {
     const layer = this.items[id];
     const excludeId = this.layers.length;
-    this.layers.push(layer);
-    this.layers.filter((l, i) => {
-      if (i === excludeId)
-        return false;
-      if (l.category === "bodies") {
-        return false;
-      }
-      if (layer.mapping === l.mapping ) {
-        return true;
-      }
-      return includes(parts[layer.mapping], l.mapping);
-    }).forEach(l => {
-      console.log("duplicate layer", l);
-      setTimeout(() => {
-        this.removeLayer(l)
-      }, 50);
-    });
+    if (this.layers.slice().filter(l => l.name === id).length == 0) {
+      this.layers.push(layer);
+      this.layers.filter((l, i) => {
+        if (i === excludeId)
+          return false;
+        if (l.category === "bodies") {
+          return false;
+        }
+        if (layer.mapping === l.mapping ) {
+          return true;
+        }
+        return !includes(parts[layer.mapping], l.mapping);
+      }).forEach(l => {
+        console.log("duplicate layer", l);
+        setTimeout(() => {
+          this.removeLayer(l)
+        }, 50);
+      });
+    }
   }
   removeLayer(layer) {
     this.layers.remove(layer);
+  }
+
+  @computed get recommendedItems() {
+    const status = [];
+    this.layers.forEach((l, i) => {
+      if (l.category === "bodies") {
+        return false;
+      }
+      status.push(l.category);
+    });
+    const preds = Object.values(this.items).filter((l, i) => {
+      if (l.category === "bodies")
+        return false;
+      if (some(status, (s) => {
+        return includes(parts[s], l.mapping);
+      }))
+        return false;
+
+      if (fp.flow(
+          fp.tail,
+          fp.map('dominantColor'),
+          fp.filter(e => e === l.dominantColor)
+        )(this.layers))
+        return true;
+
+      return false;
+    });
+    console.log("preds", preds);
+    return preds;
   }
 }
 

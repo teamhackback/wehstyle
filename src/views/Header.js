@@ -33,19 +33,18 @@ class Header extends Component {
     }
     getCategoryElement(text) {
         return(
-            <a href="#" className="Categories-link">{text}</a>
+            <a key={text} href="#" className="Categories-link">{text}</a>
         );
     }
 
     categories() {
-        var elements = [];
-        this.categoriesNames.forEach( value => {
-            elements.push(this.getCategoryElement(value));
-        });
         return (
             <div className="Header-categories-row">
                 <div className="Header-content">
-                    {elements}
+
+                  { this.categoriesNames.map(value =>
+                    this.getCategoryElement(value)
+                  )}
                 </div>
             </div>
         );
