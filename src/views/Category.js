@@ -48,6 +48,7 @@ class Category extends Component {
   render() {
     const classes = this.context.styleManager.render(styleSheet);
     const category = modelStore.getCategory(this.props.name);
+    console.log(category);
     return (
       <Link to={"/" + this.props.gender + "/category/" + this.props.name}>
         <div className="bigAvatar">
@@ -55,7 +56,7 @@ class Category extends Component {
           alt="Item"
           className={classes.bigAvatar}
           src={"/img/thumbnails/" + category.img.replace(".png", "_small.png")} />
-        <div className={classes.avatarText}>{this.props.name}
+        <div className={classes.avatarText}>
         </div>
         </div>
       </Link>

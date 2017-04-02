@@ -16,13 +16,13 @@ categoriyMapping = {
                 "name": "Tops",
                 "img": "thumbnailwomentop.png"
             },
-            "rompers": {
+            "romper": {
                 "name": "rompers",
                 "img": "thumbnailwomenonepieces.png"
             },
-            "bottom": {
+            "bottoms": {
                 "name": "Bottoms",
-                "img": "thumbnailwomenbottom.png"
+                "img": "thumbnailwomanbottom.png"
             },
             "sports": {
                 "name": "Sports",
@@ -456,6 +456,7 @@ for gender in ["male", "female"]:
             if str(item["FileId"]) == imName:
                 product = item
 
+        print(category)
         if category in categoriyMapping[gender]["categories"]:
             categoryData = categoriyMapping[gender]["categories"][category]
         if product is not None:
