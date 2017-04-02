@@ -28,6 +28,8 @@
 
   &-model {
     height: 700px;
+    float: left;
+    width: 363px;
   }
 }
 .Customizer-right {
@@ -37,4 +39,50 @@
   min-height: 726px;
   padding-left: 50px;
   float: left;
+}
+.Customizer-current-category {
+  width: 100%;
+  float: left;
+  height: 30px;
+  color: #ddd;
+  text-align: center;
+}
+.ButtonWrapper {
+  width: 100%;
+  text-align: center;
+  border-top: 1px dashed #ddd;
+  padding-top: 10px;
+  margin-top: 30px;
+}
+.Button {
+  border: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 13px;
+  outline: 0;
+  text-align: center;
+  vertical-align: top;
+  text-decoration: none!important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-appearance: none;
+  height: 33px;
+  line-height: 33px;
+  display: inline;
+  overflow: visible;
+  width: auto;
+  padding: 9px 12px;
+  color: #555;
+  background: #e8e8e8;
+  margin-right: 10px;
+
+  &-male {
+    border-left: 1px solid #ddd;
+  }
+
+  &:hover {
+    color: #fff;
+    background: #707070;
+  }
 }

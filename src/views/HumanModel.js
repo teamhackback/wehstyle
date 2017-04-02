@@ -22,7 +22,9 @@ const styles = {
     parentDiv: {
       position: "relative",
       paddingBottom: 700,
-      width: 263
+      width: 263,
+        marginLeft: 'auto',
+        marginRight: 'auto'
     }
   },
   male: {
@@ -180,7 +182,8 @@ class HumanModel extends Component {
           const e = JSON.parse(this.responseText);
           const text = encodeURI("I just created this new Wehstyle model:");
           const url = encodeURI(e.html);
-          const twitter = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+          const hashtags= encodeURI(["WehStyle", "Wehkamp", "HexTBD2017"].join(","));
+          const twitter = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
           window.open(twitter,'_blank');
         }
       };
@@ -212,8 +215,13 @@ class HumanModel extends Component {
 
         { this.state.hoveredLayer && this.state.hoveredLayer.category !== "bodies" ?
             <ModelThumbnail model={this.state.hoveredLayer} />
-            : null
+            : <div className="Customizer-current-category">Selecteer een kledingstuk</div>
         }
+          <div className="ButtonWrapper">
+              <div className="Button" type="button" onClick={this.imageUploadClick}>Upload</div>
+              <div className="Button" type="button" onClick={this.downloadClick}>Download</div>
+              <div className="Button Button-male" type="button">Male</div>
+          </div>
       </div>
     );
   }

@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 class ModelThumbnail extends Component {
   render() {
     return (
-      <div>
-        Category: {this.props.model.category }
+      <div className="Customizer-current-category">
+        Categorie: {this.props.model.category }
       </div>
     );
   }
