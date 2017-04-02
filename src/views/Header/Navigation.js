@@ -26,10 +26,10 @@ class Navigation extends Component {
     links() {
         return (
             <div className="Header-navigation-link-wrapper">
-                <a href="https://www.wehkamp.nl/" class="btn-root btn-Shop active">Shop</a>
-                <a href="https://www.wehkamp.nl/premium" class="btn-root btn-Premium ">Premium</a>
-                <a href="https://www.wehkamp.nl/inspiratie" class="btn-root btn-Inspiration ">Magazine</a>
-                <a href="https://www.wehkamp.nl/merken/" class="btn-root btn-Brands ">Merken</a>
+                <a href="https://www.wehkamp.nl/" className="btn-root btn-Shop active">Shop</a>
+                <a href="https://www.wehkamp.nl/premium" className="btn-root btn-Premium ">Premium</a>
+                <a href="https://www.wehkamp.nl/inspiratie" className="btn-root btn-Inspiration ">Magazine</a>
+                <a href="https://www.wehkamp.nl/merken/" className="btn-root btn-Brands ">Merken</a>
             </div>
         );
     }
@@ -37,7 +37,7 @@ class Navigation extends Component {
     search() {
         return (
             <form className="Header-navigation-search">
-                <input type="search" maxlength="100" className="Header-navigation-searchbox" placeholder="Zoeken" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value={this.state.value} onChange={this.handleChange} />
+                <input type="search" maxLength="100" className="Header-navigation-searchbox" placeholder="Zoeken" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" value={this.state.value} onChange={this.handleChange} />
                 <button className="icon icon-search"><span>Zoek</span></button>
                 <button className="icon icon-cross"><span>Zoek</span></button>
             </form>

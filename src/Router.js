@@ -3,11 +3,14 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import Layout from 'material-ui/Layout';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DevTool, { configureDevtool } from 'mobx-react-devtools';
 
-import Customizer from "./views/Customizer";
+import Thumbnails from './views/Thumbnails';
+import Categories from './views/Categories';
+import { modelStore } from './stores/ModelStore';
+import Header from "./views/Header";
+import Home from "./views/Home";
 
 // Any configurations are optional
 configureDevtool({
@@ -26,7 +29,12 @@ export default (
     <MuiThemeProvider>
       <div className="App">
         <DevTool />
-        <Customizer></Customizer>
+        <Header />
+        <Route exact path="/" component={Home} />
+        <Route path="/categories" component={Categories} />
+        {Object.values(modelStore.categories).map(cat =>
+          <Route key={cat.id} path={"/category/" + cat.name} component={Thumbnails} />
+        )}
       </div>
     </MuiThemeProvider>
   </Router>

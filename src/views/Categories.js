@@ -5,6 +5,7 @@ import Paper from 'material-ui/Paper';
 import Layout from 'material-ui/Layout';
 import Text from 'material-ui/Text';
 
+import Customizer from "./Customizer";
 import {modelStore} from '../stores/ModelStore';
 import {mapValues} from 'lodash';
 import {transititonTo} from 'react-router';
@@ -13,6 +14,8 @@ import {Link} from 'react-router-dom';
 import {observer} from 'mobx-react';
 
 import './Categories.scss';
+import './Customizer.scss';
+import HumanModel from './HumanModel';
 
 const styleSheet = createStyleSheet('Categories', () => {
   return {
@@ -39,17 +42,29 @@ class Categories extends Component {
     const classes = this.context.styleManager.render(styleSheet);
 
     return (
-      <Layout container className={classes.root}>
-        {Object.values(modelStore.categories).map(cat =>
-          <Layout item key={cat.id}>
-            <Link to={"/category/" + cat.name}>
-              <Paper className={classes.paper}>
-                <Text>{cat.name}</Text>
-              </Paper>
-            </Link>
-          </Layout>
-        )}
-      </Layout>
+      <div className={classes.container}>
+        <Layout container align='flex-start' justify='center' gutter={0}>
+            <Layout item lg={6}>
+                <div className="Title">Your outfit</div>
+                <HumanModel model={modelStore}></HumanModel>
+            </Layout>
+            <Layout item lg={6}>
+              <div className="Title">Select category</div>
+              <Layout container align='flex-start' justify='center' gutter={12}>
+                {Object.values(modelStore.categories).map(cat =>
+                  <Layout item key={cat.id}>
+                    <Link to={"/category/" + cat.name}>
+                      <Paper className={classes.paper}>
+                        <Text>{cat.name}</Text>
+                      </Paper>
+                    </Link>
+                  </Layout>
+                )}
+              </Layout>
+            </Layout>
+        </Layout>
+      
+      </div>
     );
   }
 }

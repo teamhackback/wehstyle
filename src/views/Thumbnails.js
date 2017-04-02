@@ -10,10 +10,11 @@ import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
 
 import {GLOBAL_IMAGE_PATH, modelStore} from '../stores/ModelStore';
+import HumanModel from './HumanModel';
 import {observer} from 'mobx-react';
 
 
-const styleSheet = createStyleSheet('ArticleThumbnails', () => {
+const styleSheet = createStyleSheet('Thumbnails', () => {
   return {
     root: {
       flexGrow: 1,
@@ -28,7 +29,7 @@ const styleSheet = createStyleSheet('ArticleThumbnails', () => {
 });
 
 @observer
-class ArticleThumbnails extends Component {
+class Thumbnails extends Component {
   static contextTypes = {
     styleManager: customPropTypes.muiRequired,
   }
@@ -45,18 +46,15 @@ class ArticleThumbnails extends Component {
     const classes = this.context.styleManager.render(styleSheet);
 
     return (
-      <div>
-        <Link to="/">
-          <Button> Back </Button>
-        </Link>
-        <Layout container className={classes.root}>
-          <Layout item xs={12}>
-            <Layout
-              container
-              className={classes.demo}
-              justify="center"
-              gutter={24}
-            >
+      <div className={classes.container}>
+        <Layout container align='flex-start' justify='center' gutter={0}>
+          <Layout item lg={6}>
+            <div className="Title">Your outfit</div>
+            <HumanModel model={modelStore}></HumanModel>
+          </Layout>
+          <Layout item lg={6}>
+            <div className="Title">Select item</div>
+            <Layout container align='flex-start' justify='center' gutter={12}>
               {this.state.articles.map(article =>
                 <Layout key={article} item onClick={() => modelStore.addLayerById(article)}>
                   <Card className={classes.card}>
@@ -74,4 +72,4 @@ class ArticleThumbnails extends Component {
   }
 }
 
-export default ArticleThumbnails;
+export default Thumbnails;

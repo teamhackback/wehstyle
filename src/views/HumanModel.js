@@ -194,10 +194,12 @@ class HumanModel extends Component {
   render() {
     return (
       <div onMouseOut={this.onMouseOut}>
-        <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
-        <Button type="button" onClick={this.downloadClick}>Download</Button>
-        <Button type="button" onClick={this.shareClick}>Share</Button>
-        <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
+        <div className="ButtonWrapper">
+          <Button type="button" onClick={this.imageUploadClick}>Upload</Button>
+          <Button type="button" onClick={this.downloadClick}>Download</Button>
+          <Button type="button" onClick={this.shareClick}>Share</Button>
+          <input ref="imgUpload" type="file" style={{"display": "none"}} onChange={this.onImageUpload} />
+        </div>
         <div onMouseMove={this.onMouseMove} onClick={this.onClick} style={styles[modelStore.gender].parentDiv}
           ref={(node) => this.modelNode = node}
         >
@@ -217,11 +219,6 @@ class HumanModel extends Component {
             <ModelThumbnail model={this.state.hoveredLayer} />
             : <div className="Customizer-current-category">Selecteer een kledingstuk</div>
         }
-          <div className="ButtonWrapper">
-              <div className="Button" type="button" onClick={this.imageUploadClick}>Upload</div>
-              <div className="Button" type="button" onClick={this.downloadClick}>Download</div>
-              <div className="Button Button-male" type="button">Male</div>
-          </div>
       </div>
     );
   }
