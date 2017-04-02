@@ -164,7 +164,8 @@ class HumanModel extends Component {
   };
 
   downloadClick = () => {
-    domtoimage.toBlob(this.modelNode).then((blob) => {
+    const style = {marginLeft: "0px"};
+    domtoimage.toBlob(this.modelNode, {"bgcolor": "white", style : style}).then((blob) => {
       saveAs(blob, 'my-node.jpg');
     });
   };
@@ -213,7 +214,7 @@ class HumanModel extends Component {
 
         { this.state.hoveredLayer && this.state.hoveredLayer.category !== "bodies" ?
             <ModelThumbnail model={this.state.hoveredLayer} />
-            : <div className="Customizer-current-category">Selecteer een kledingstuk</div>
+            : <div className="Customizer-current-category">Select clothing</div>
         }
         <div className="ButtonWrapper">
           <div className="Button" onClick={this.imageUploadClick}>Upload</div>
