@@ -89,6 +89,7 @@ class ModelStore {
         this.layers.push(layer);
       }
 
+      console.log("adding", layer.mapping);
       this.layers.filter((l, i) => {
         if (l.id === lid)
           return false;
@@ -98,7 +99,7 @@ class ModelStore {
         if (layer.mapping === l.mapping ) {
           return true;
         }
-        return !includes(parts[layer.mapping], l.mapping);
+        return includes(parts[layer.mapping], l.mapping);
       }).forEach(l => {
         console.log("duplicate layer", l);
         setTimeout(() => {
@@ -144,7 +145,6 @@ class ModelStore {
   }
 
   @computed get searchedItems() {
-    console.log("running pred");
     const search = this.searchTerm.toLowerCase();
     return Object.values(this.items).filter((l, i) => {
       if (l.category === "bodies")
