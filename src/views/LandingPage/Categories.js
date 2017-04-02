@@ -3,14 +3,14 @@ import React, {Component} from 'react';
 import './Categories.scss';
 
 class Categories extends Component {
-    categories = [ "Kids", "Business", "Men", "Women", "Teenagers", "Sports" ];
+    categories = [ "Men", "Women", "Kids", "Business", "Teenagers", "Sports" ];
 
     getCategoryElement(text) {
         return(
-            <div className="Category">
+            <a href="/male/categories/" className="Category">
                 <img src={"./img/landing/" + text + ".png"}></img>
                 <span className="imageDescription">{text}</span>
-            </div>
+            </a>
         );
     }
 

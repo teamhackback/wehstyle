@@ -11,7 +11,6 @@ class LandingPage extends Component {
     render() {
         return (
             <div>
-                <Header></Header>
                 <div className="Logo">
                     <img src="./img/logo.png" alt="Logo" />
                 </div>

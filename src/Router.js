@@ -9,7 +9,7 @@ import Thumbnails from './views/Thumbnails';
 import Categories from './views/Categories';
 import { modelStore } from './stores/ModelStore';
 import Header from "./views/Header";
-import Home from "./views/Home";
+import LandingPage from "./views/LandingPage";
 
 //import DevTool, { configureDevtool } from 'mobx-react-devtools';
 // Any configurations are optional
@@ -30,7 +30,7 @@ export default (
     <MuiThemeProvider>
       <div className="App">
         <Header />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={LandingPage} />
         { ["male", "female"].map(gender =>
           <div key={gender}>
             <Route path={"/" + gender + "/categories"} component={Categories} />

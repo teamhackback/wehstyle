@@ -50,7 +50,7 @@ class Categories extends Component {
       <div className={classes.container}>
         <Layout container align='flex-start' justify='center' gutter={0}>
             <Layout item lg={4}>
-                <div className="Title-outfit">Your outfit</div>
+                <div className="Title Title-outfit">Your outfit</div>
                 <HumanModel model={modelStore}></HumanModel>
             </Layout>
             <Layout item lg={8}>

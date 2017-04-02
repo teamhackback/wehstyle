@@ -33,7 +33,7 @@ class Customizer extends Component {
     humanModel() {
         return (
             <div className="Customizer-left">
-                <div className="Title-outfit">Your outfit</div>
+                <div className="Title Title-outfit">Your outfit</div>
                 <div className="Customizer-left-model">
                     <HumanModel model={modelStore}></HumanModel>
                 </div>
