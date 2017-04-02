@@ -17,6 +17,17 @@
   margin-bottom: 15px;
   margin-top: 50px;
 }
+.Title-outfit {
+  width: 100%;
+  font: normal 28px/1.4 HarrietDisplayLight;
+  float: left;
+  text-align: center;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 15px;
+  margin-top: 50px;
+  padding-left: 6vw;
+}
 .Customizer-wrapper {
   max-width: 1190px;
   width: 1190px;
@@ -45,14 +56,17 @@
   width: 100%;
   float: left;
   height: 30px;
-  color: #ddd;
+  color: black;
   text-align: center;
+  margin-left: 6vw;
 }
 .ButtonWrapper {
   width: 100%;
   text-align: center;
   padding-top: 10px;
   margin-top: 30px;
+  padding-left: 6vw;
+  float: left;
 }
 .Button {
   border: 0;

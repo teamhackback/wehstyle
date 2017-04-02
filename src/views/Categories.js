@@ -49,11 +49,11 @@ class Categories extends Component {
     return (
       <div className={classes.container}>
         <Layout container align='flex-start' justify='center' gutter={0}>
-            <Layout item lg={6}>
-                <div className="Title">Your outfit</div>
+            <Layout item lg={4}>
+                <div className="Title Title-outfit">Your outfit</div>
                 <HumanModel model={modelStore}></HumanModel>
             </Layout>
-            <Layout item lg={6}>
+            <Layout item lg={8}>
             <SearchView />
             <Recommender />
               <div className="Title">Select category</div>
